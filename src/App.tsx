@@ -383,33 +383,39 @@ function App() {
               <option>OFF</option>
             </Form.Select>
         </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>ハード</Form.Label>
-          <Form.Select
-            onChange={
-              e => {
-                setTwdata({ ...twdata, hardware: e.target.value });
-              }
-            }
-            value={twdata.hardware} >
-              <option>どっちもOK</option>
-              <option>PlayStationのみ</option>
-              <option>PCのみ</option>
-            </Form.Select>
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>通信制限</Form.Label>
-          <Form.Select
-            onChange={
-              e => {
-                setTwdata({ ...twdata, speedlimit: e.target.value });
-              }
-            }
-            value={twdata.speedlimit} >
-              <option>ON</option>
-              <option>OFF</option>
-            </Form.Select>
-        </Form.Group>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>ハード</Form.Label>
+              <Form.Select
+                onChange={
+                  e => {
+                    setTwdata({ ...twdata, hardware: e.target.value });
+                  }
+                }
+                value={twdata.hardware} >
+                <option>どっちもOK</option>
+                <option>PlayStationのみ</option>
+                <option>PCのみ</option>
+              </Form.Select>
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>通信制限</Form.Label>
+              <Form.Select
+                onChange={
+                  e => {
+                    setTwdata({ ...twdata, speedlimit: e.target.value });
+                  }
+                }
+                value={twdata.speedlimit} >
+                <option>ON</option>
+                <option>OFF</option>
+              </Form.Select>
+            </Form.Group>
+          </Col>
+        </Row>
         <Form.Group className="mb-3">
           <Form.Label>パス</Form.Label>
           <Form.Control
