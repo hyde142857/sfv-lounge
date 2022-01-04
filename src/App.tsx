@@ -268,7 +268,7 @@ function App() {
         <Form.Group className="mb-3">
           <Form.Label>メッセージ</Form.Label>
           <Form.Control
-            type="text"
+            as="textarea" rows={3}
             onChange={
               e => {
                 setTwdata({ ...twdata, message: e.target.value });
@@ -453,7 +453,7 @@ function App() {
         <Form.Group className="mb-3">
           <Form.Label>コメント</Form.Label>
           <Form.Control
-            type='text'
+            as="textarea" rows={3}
             onChange={
               e => {
                 setTwdata({ ...twdata, comment: e.target.value });
