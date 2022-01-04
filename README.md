@@ -1,3 +1,5 @@
+![deploy workflow](https://github.com/hyde142857/sfv-lounge/workflows/deploy/badge.svg)
+
 # スト5ラウンジ募集ツール
 
 ## ツールURL
