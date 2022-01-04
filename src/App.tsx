@@ -98,28 +98,28 @@ function GetTweetText(twdata: TweetData) {
   if (twdata.message !== "") {
     twtext += twdata.message + "\n\n";
   }
-  twtext += "ID : " + twdata.fightingId + "\n";
+  twtext += "【ID】" + twdata.fightingId + "\n";
   if (twdata.charactor !== "") {
-    twtext += "キャラ : " + twdata.charactor + "\n";
+    twtext += "【キャラ】" + twdata.charactor + "\n";
   }
   if (twdata.lp !== "") {
-    twtext += "LP : " + twdata.lp + " " + GetLpRank(twdata.lp) + "\n";
+    twtext += "【LP】" + twdata.lp + " " + GetLpRank(twdata.lp) + "\n";
   }
   if (twdata.gameround !== "3ラウンド" || twdata.gametime !== "99秒") {
-    twtext += "ラウンド : " + twdata.gameround + " " + twdata.gametime + "\n";
+    twtext += "【ラウンド】" + twdata.gameround + " " + twdata.gametime + "\n";
   }
-  twtext += "連戦 : " + twdata.game + twdata.gameset + "\n";
-  twtext += "キャラセレ : " + twdata.charactorSelect + "\n";
-  twtext += "ハード : " + twdata.hardware + "\n";
-  twtext += "通信制限 : " + twdata.speedlimit + "\n";
-  twtext += "パス : ";
+  twtext += "【連戦】" + twdata.game + twdata.gameset + "\n";
+  twtext += "【キャラセレ】" + twdata.charactorSelect + "\n";
+  twtext += "【ハード】" + twdata.hardware + "\n";
+  twtext += "【通信制限】" + twdata.speedlimit + "\n";
+  twtext += "【パス】";
   if (twdata.passcode === "") {
     twtext += "なし\n";
   } else {
     twtext += twdata.passcode + "\n";
   }
   if (twdata.comment !== "") {
-    twtext += "コメント : " + twdata.comment + "\n";
+    twtext += "【コメント】" + twdata.comment + "\n";
   }
   twtext += "#ストVラウンジ募集\n";
   return (twtext);
