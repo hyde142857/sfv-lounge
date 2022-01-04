@@ -147,6 +147,10 @@ function submitTweet(twdata:TweetData){
   window.open("https://twitter.com/intent/tweet?text=" + twdata_uri + "&url=" + url, "_blank");
 }
 
+function launchTwitterLive() {
+  window.open( "https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live", "_blank");
+}
+
 function launchNewIssue(twdata: TweetData) {
   window.open( GITHUB_REPOS_URL + "/issues", "_blank");
 }
@@ -221,6 +225,14 @@ function TweetButton(props:Props) {
   return (
     <TwitterLoginButton onClick={() => submitTweet(props.twdata)} >
       <span>募集をツイートする</span>
+    </TwitterLoginButton>
+  );
+}
+
+function CheckLiveTweetButton() {
+  return (
+    <TwitterLoginButton onClick={() => launchTwitterLive()} >
+      <span>#ストVラウンジ募集 を見る</span>
     </TwitterLoginButton>
   );
 }
@@ -454,6 +466,8 @@ function App() {
         <TweetPreview twdata={twdata} />
         <hr />
         <TweetButton twdata={twdata} />
+        <hr />
+        <CheckLiveTweetButton />
         <hr />
         <RequestButton twdata={twdata} />
       </Form>
