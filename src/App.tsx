@@ -266,18 +266,7 @@ function App() {
     <Container>
       <Form>
         <Form.Group className="mb-3">
-          <Form.Label>メッセージ</Form.Label>
-          <Form.Control
-            as="textarea" rows={3}
-            onChange={
-              e => {
-                setTwdata({ ...twdata, message: e.target.value });
-              }
-            }
-            value={twdata.message} />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>ID</Form.Label>
+          <Form.Label>Fighter's ID</Form.Label>
           <Form.Control
             type="text"
             onChange={
@@ -449,6 +438,17 @@ function App() {
               }
             }
             value={twdata.url} />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label>先頭メッセージ</Form.Label>
+          <Form.Control
+            as="textarea" rows={3}
+            onChange={
+              e => {
+                setTwdata({ ...twdata, message: e.target.value });
+              }
+            }
+            value={twdata.message} />
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>コメント</Form.Label>
