@@ -27,6 +27,13 @@ type Props = {
   twdata: TweetData;
 }
 
+function FightingIdIsInvalid(twdata: TweetData) {
+  if (twdata.fightingId === "") {
+    return true;
+  }
+  return false;
+}
+
 function GetLpRank(lp: string) {
   if (!lp.match(/^\d+$/)) {
     return "";
@@ -274,7 +281,9 @@ function App() {
                 setTwdata({ ...twdata, fightingId: e.target.value });
               }
             }
-            value={twdata.fightingId} />
+            value={twdata.fightingId}
+            isInvalid={FightingIdIsInvalid(twdata)} />
+          <div className="invalid-feedback">Fighter's IDの入力は、必須です。</div>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>キャラ</Form.Label>
