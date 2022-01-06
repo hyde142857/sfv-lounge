@@ -1,5 +1,5 @@
 import { Card } from 'react-bootstrap';
-import { GetTweetText } from '../api/Utils'
+import { GetTweetText, GetUrl } from '../api/Utils'
 import { Props } from '../types/Defs'
 
 function TweetPreview(props: Props) {
@@ -9,6 +9,7 @@ function TweetPreview(props: Props) {
         <Card.Body>
           <pre>
             {GetTweetText(props.twdata)}
+            {GetUrl(props.twdata)}
           </pre>
         </Card.Body>
       </Card>

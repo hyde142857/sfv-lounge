@@ -77,12 +77,17 @@ export function GetTweetText(twdata: TweetData) {
   return (twtext);
 }
 
-export function submitTweet(twdata:TweetData){
-  const twdata_uri = encodeURIComponent(GetTweetText(twdata));
+export function GetUrl(twdata:TweetData){
   let url = GITHUB_PAGES_URL;
   if ( twdata.url !== ""){
     url = twdata.url;
   }
+  return url;
+}
+
+export function submitTweet(twdata:TweetData){
+  const twdata_uri = encodeURIComponent(GetTweetText(twdata));
+  let url = GetUrl(twdata);
   window.open("https://twitter.com/intent/tweet?text=" + twdata_uri + "&url=" + url, "_blank");
 }
 

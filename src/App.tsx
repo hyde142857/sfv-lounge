@@ -12,8 +12,8 @@ function App() {
     </Navbar>
     <Container>
       <TweetFormPage />
-    </Container></>
-  );
+    </Container>
+  </>);
 }
 
 export default App;
