@@ -5,11 +5,12 @@ import TweetFormPage from './pages/TweetFormPage';
 function App() {
 
   return (<>
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="dark" variant="dark" expand="lg" sticky='top'>
       <Container>
-        <Navbar.Brand href="#home">スト5ラウンジ募集</Navbar.Brand>
+        <Navbar.Brand>スト5ラウンジ募集ツール</Navbar.Brand>
       </Container>
     </Navbar>
+    <br />
     <Container>
       <TweetFormPage />
     </Container>
