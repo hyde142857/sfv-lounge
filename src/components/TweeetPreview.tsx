@@ -1,6 +1,6 @@
 import { Card } from 'react-bootstrap';
-import { GetTweetText, GetUrl } from '../api/Utils'
-import { Props } from '../types/Defs'
+import { GetTweetText, GetUrl } from '../api/Utils';
+import { Props } from '../types/Defs';
 
 function TweetPreview(props: Props) {
   return (
