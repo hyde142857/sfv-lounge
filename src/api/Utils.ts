@@ -120,7 +120,7 @@ export function saveLocalStorage(twdata:TweetData){
   localStorage.setItem('sfvlounge_roommatch.comment', twdata.comment);
 }
 
-export function loadLocalStorage() {
+function TweetDataGetDefault(){
   let twdata: TweetData = {
     message: "",
     fightingId: "",
@@ -137,6 +137,11 @@ export function loadLocalStorage() {
     url: "",
     comment: "",
   };
+  return twdata;
+}
+
+export function loadLocalStorage() {
+  let twdata: TweetData = TweetDataGetDefault();
   twdata.message = localStorage.getItem('sfvlounge_roommatch.message') || "";
   twdata.fightingId = localStorage.getItem('sfvlounge_roommatch.fightingid') || "";
   twdata.charactor = localStorage.getItem('sfvlounge_roommatch.charactor') || "";
