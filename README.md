@@ -13,6 +13,6 @@ https://hyde142857.github.io/sfv-lounge/
 
 ## ライセンス
 
-Copyright (C) 2021 Hyde.
+Copyright (C) 2021 @hyde142857.  [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40hyde142857)](https://twitter.com/hyde142857).
 
 Licensed under the [MIT License](LICENSE).
