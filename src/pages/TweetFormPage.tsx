@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Form, Row, Col } from 'react-bootstrap';
 import { TweetData } from '../types/Defs';
 import { FightingIdIsInvalid, loadLocalStorage } from '../api/Utils';
-import { TweetPreview, SaveButton, TweetButton, CheckLiveTweetButton, RequestButton } from '../components/';
-import TwdataformText from '../components/TwdataformText';
-import TwdataformSelect from '../components/TwdataformSelect';
-import TwdataformTextarea from '../components/TwdataformTextarea';
+import {
+  TweetPreview, SaveButton, TweetButton, CheckLiveTweetButton, RequestButton,
+  TwdataformText, TwdataformTextarea, TwdataformSelect
+} from '../components/';
 
 function TweetFormPage(){
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
