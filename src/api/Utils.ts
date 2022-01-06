@@ -44,35 +44,64 @@ export function GetLpRank(lp: string) {
   return rank;
 }
 
+function GetTweetTextMessage(message: string) {
+  if (message !== "") {
+    return message + "\n\n";
+  }
+  return "";
+}
+
+function GetTweetTextCharactor(charactor: string) {
+  if (charactor !== "") {
+    return "【キャラ】" + charactor + "\n";
+  }
+  return "";
+}
+
+function GetTweetTextLp(lp: string) {
+  if (lp !== "") {
+    return "【LP】" + lp + " " + GetLpRank(lp) + "\n";
+  }
+  return "";
+}
+
+function GetTweetTextGame(gameround: string, gametime: string) {
+  if (gameround !== "3ラウンド" || gametime !== "99秒") {
+    return "【ラウンド】" + gameround + " " + gametime + "\n";
+  }
+  return "";
+}
+
+function GetTweetTextPasscode(passcode: string) {
+  let twtext = "【パス】";
+  if (passcode === "") {
+    twtext += "なし\n";
+  } else {
+    twtext += passcode + "\n";
+  }
+  return twtext;
+}
+
+function GetTweetTextComment(comment: string) {
+  if (comment !== "") {
+    return "【コメント】" + comment + "\n";
+  }
+  return "";
+}
+
 export function GetTweetText(twdata: TweetData) {
   let twtext = "";
-
-  if (twdata.message !== "") {
-    twtext += twdata.message + "\n\n";
-  }
+  twtext += GetTweetTextMessage(twdata.message);
   twtext += "【ID】" + twdata.fightingId + "\n";
-  if (twdata.charactor !== "") {
-    twtext += "【キャラ】" + twdata.charactor + "\n";
-  }
-  if (twdata.lp !== "") {
-    twtext += "【LP】" + twdata.lp + " " + GetLpRank(twdata.lp) + "\n";
-  }
-  if (twdata.gameround !== "3ラウンド" || twdata.gametime !== "99秒") {
-    twtext += "【ラウンド】" + twdata.gameround + " " + twdata.gametime + "\n";
-  }
+  twtext += GetTweetTextCharactor(twdata.charactor);
+  twtext += GetTweetTextLp(twdata.lp);
+  twtext += GetTweetTextGame(twdata.gameround,twdata.gametime);
   twtext += "【連戦】" + twdata.game + twdata.gameset + "\n";
   twtext += "【キャラセレ】" + twdata.charactorSelect + "\n";
   twtext += "【ハード】" + twdata.hardware + "\n";
   twtext += "【通信制限】" + twdata.speedlimit + "\n";
-  twtext += "【パス】";
-  if (twdata.passcode === "") {
-    twtext += "なし\n";
-  } else {
-    twtext += twdata.passcode + "\n";
-  }
-  if (twdata.comment !== "") {
-    twtext += "【コメント】" + twdata.comment + "\n";
-  }
+  twtext += GetTweetTextPasscode(twdata.passcode);
+  twtext += GetTweetTextComment(twdata.comment);
   twtext += "#ストVラウンジ募集\n";
   return (twtext);
 }
