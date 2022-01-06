@@ -5,6 +5,7 @@ import { FightingIdIsInvalid, loadLocalStorage } from '../api/Utils';
 import { TweetPreview, SaveButton, TweetButton, CheckLiveTweetButton, RequestButton } from '../components/';
 import TwdataformText from '../components/TwdataformText';
 import TwdataformSelect from '../components/TwdataformSelect';
+import TwdataformTextarea from '../components/TwdataformTextarea';
 
 function TweetFormPage(){
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
@@ -99,45 +100,31 @@ function TweetFormPage(){
         </Col>
       </Row>
       <TwdataformText
-        label="パス"
-        value={twdata.passcode}
+        label="パス" value={twdata.passcode}
         onChange={
-          e => {
-            setTwdata({ ...twdata, passcode: e.target.value });
-          }
+          e => { setTwdata({ ...twdata, passcode: e.target.value }); }
         }
       />
       <TwdataformText
         label="URL (空欄時,本ツールのURLになります。)"
         value={twdata.url}
         onChange={
-          e => {
-            setTwdata({ ...twdata, url: e.target.value });
-          }
+          e => { setTwdata({ ...twdata, url: e.target.value }); }
         }
       />
-      <Form.Group className="mb-3">
-        <Form.Label>先頭メッセージ</Form.Label>
-        <Form.Control
-          as="textarea" rows={3}
-          onChange={
-            e => {
-              setTwdata({ ...twdata, message: e.target.value });
-            }
-          }
-          value={twdata.message} />
-      </Form.Group>
-      <Form.Group className="mb-3">
-        <Form.Label>コメント</Form.Label>
-        <Form.Control
-          as="textarea" rows={3}
-          onChange={
-            e => {
-              setTwdata({ ...twdata, comment: e.target.value });
-            }
-          }
-          value={twdata.comment} />
-      </Form.Group>
+      <TwdataformTextarea
+        label="先頭メッセージ"
+        value={twdata.message}
+        onChange={
+          e => { setTwdata({ ...twdata, message: e.target.value }); }
+        }
+      />
+      <TwdataformTextarea
+        label="コメント" value={twdata.comment}
+        onChange={
+          e => { setTwdata({ ...twdata, comment: e.target.value }); }
+        }
+      />
       <Form.Group className="mb-3">
         <Form.Label>プレビュー</Form.Label>
         <TweetPreview twdata={twdata} />
