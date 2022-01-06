@@ -5,7 +5,7 @@ on:
     branches-ignore: [ master ]
 
 jobs:
-  deploy:
+  unittest:
     runs-on: ubuntu-latest
 
     steps:
