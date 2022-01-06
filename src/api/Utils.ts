@@ -1,4 +1,4 @@
-import { GITHUB_PAGES_URL, GITHUB_REPOS_URL, TweetData } from '../types/Defs'
+import { GITHUB_PAGES_URL, GITHUB_REPOS_URL, TweetData } from '../types/Defs';
 
 export function FightingIdIsInvalid(twdata: TweetData) {
   if (twdata.fightingId === "") {
@@ -7,69 +7,41 @@ export function FightingIdIsInvalid(twdata: TweetData) {
   return false;
 }
 
+const LpRankList: { [key: string]: number } = {
+  "[Rookie]": 0,
+  "[Bronze]": 500,
+  "[SuperBronze]": 1000,
+  "[UltraBronze]": 1500,
+  "[Silver]": 2000,
+  "[SuperSilver]": 3000,
+  "[UltraSilver]": 3500,
+  "[Gold]": 4000,
+  "[SuperGold]": 5500,
+  "[UltraGold]": 6500,
+  "[Platinum]": 7500,
+  "[SuperPlatinum]": 10000,
+  "[UltraPlatinum]": 12000,
+  "[Diamond]": 14000,
+  "[SuperDiamond]": 20000,
+  "[UltraDiamond]": 25000,
+  "[Master]": 30000,
+  "[GrandMaster]": 35000,
+  "[UltraGrandMaster]": 100000,
+  "[Warload]": 300000,
+};
+
 export function GetLpRank(lp: string) {
+  let rank = "";
   if (!lp.match(/^\d+$/)) {
     return "";
   }
   const lpnum = Number(lp);
-  if (lpnum < 500) {
-    return "[Rookie]"
+  for (let k in LpRankList) {
+    if (LpRankList[k] <= lpnum) {
+      rank = k;
+    }
   }
-  if (lpnum < 1000) {
-    return "[Bronze]"
-  }
-  if (lpnum < 1500) {
-    return "[SuperBronze]"
-  }
-  if (lpnum < 2000) {
-    return "[UltraBronze]"
-  }
-  if (lpnum < 3000) {
-    return "[Silver]"
-  }
-  if (lpnum < 3500) {
-    return "[SuperSilver]"
-  }
-  if (lpnum < 4000) {
-    return "[UltraSilver]"
-  }
-  if (lpnum < 5500) {
-    return "[Gold]"
-  }
-  if (lpnum < 6500) {
-    return "[SuperGold]"
-  }
-  if (lpnum < 7500) {
-    return "[UltraCold]"
-  }
-  if (lpnum < 10000) {
-    return "[Platinum]"
-  }
-  if (lpnum < 12000) {
-    return "[SuperPlatinum]"
-  }
-  if (lpnum < 14000) {
-    return "[UltraPlatinum]"
-  }
-  if (lpnum < 20000) {
-    return "[Diamond]"
-  }
-  if (lpnum < 25000) {
-    return "[SuperDiamond]"
-  }
-  if (lpnum < 30000) {
-    return "[UltraDiamond]"
-  }
-  if (lpnum < 35000) {
-    return "[Master]"
-  }
-  if (lpnum < 100000) {
-    return "[GrandMaster]"
-  }
-  if (lpnum < 300000) {
-    return "[UltimateGrandMaster]"
-  }
-  return "[Warload]"
+  return rank;
 }
 
 export function GetTweetText(twdata: TweetData) {
