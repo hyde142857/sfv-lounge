@@ -15,7 +15,7 @@ function TwdataformSelect(props:TwdataformSelectProps) {
                 onChange={props.onChange}
                 value={props.value} >
                 {
-                    props.options.map((opt) => <option>{opt}</option>)
+                    props.options.map((opt) => <option key={opt}>{opt}</option>)
                 }
             </Form.Select>
         </Form.Group>
