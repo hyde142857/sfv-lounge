@@ -149,7 +149,7 @@ export function saveLocalStorage(twdata:TweetData){
   localStorage.setItem('sfvlounge_roommatch.comment', twdata.comment);
 }
 
-function TweetDataGetDefault(){
+export function TweetDataGetDefault(){
   let twdata: TweetData = {
     message: "",
     fightingId: "",
