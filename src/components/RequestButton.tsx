@@ -1,18 +1,17 @@
 import { GithubLoginButton } from 'react-social-login-buttons';
 import { launchNewIssue, launchGithub } from '../api/Utils';
-import { Props } from '../types/Defs';
 import { Row, Col } from 'react-bootstrap';
 
-function RequestButton(props:Props) {
+function RequestButton() {
   return (
     <Row>
       <Col>
-        <GithubLoginButton onClick={() => launchNewIssue(props.twdata)} >
+        <GithubLoginButton onClick={() => launchNewIssue()} >
           <span>要望・問題報告</span>
         </GithubLoginButton>
       </Col>
       <Col>
-        <GithubLoginButton onClick={() => launchGithub(props.twdata)} >
+        <GithubLoginButton onClick={() => launchGithub()} >
           <span>GitHub repository</span>
         </GithubLoginButton>
       </Col>

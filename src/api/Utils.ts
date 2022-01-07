@@ -124,11 +124,11 @@ export function launchTwitterLive() {
   window.open( "https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live", "_blank");
 }
 
-export function launchNewIssue(twdata: TweetData) {
+export function launchNewIssue() {
   window.open( GITHUB_REPOS_URL + "/issues", "_blank");
 }
 
-export function launchGithub(twdata: TweetData) {
+export function launchGithub() {
   window.open( GITHUB_REPOS_URL, "_blank");
 }
 
