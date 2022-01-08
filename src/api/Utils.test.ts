@@ -1,4 +1,4 @@
-import { GITHUB_PAGES_URL } from "../types/Defs";
+import { GITHUB_PAGES_URL, GITHUB_REPOS_URL } from "../types/Defs";
 import {
   TweetDataGetDefault,
   FightingIdIsInvalid,
@@ -74,8 +74,32 @@ test('localStorage', () => {
 });
 
 test('utils function calls', () => {
+  let actualUrl:string = "";
+  let openSpy = jest.fn();
+  openSpy.mockImplementation((url: string) => {
+    actualUrl = url;
+  });
+  window.open = openSpy;
+
   launchTwitterLive();
+  expect(actualUrl).toEqual(
+    "https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live"
+    );
+
   submitTweet(TweetDataGetDefault());
+  expect(actualUrl).toEqual(
+    "https://twitter.com/intent/tweet?text=%E3%80%90ID%E3%80%91%0A%E3%80%90%E9%80%A3%E6%88%A6%E3%80%911%E6%9C%AC%E5%85%88%E5%8F%96%0A%E3%80%90%E3%82%AD%E3%83%A3%E3%83%A9%E3%82%BB%E3%83%AC%E3%80%91OFF%0A%E3%80%90%E3%83%8F%E3%83%BC%E3%83%89%E3%80%91%E3%81%A9%E3%81%A3%E3%81%A1%E3%82%82OK%0A%E3%80%90%E9%80%9A%E4%BF%A1%E5%88%B6%E9%99%90%E3%80%91OFF%0A%E3%80%90%E3%83%91%E3%82%B9%E3%80%91%E3%81%AA%E3%81%97%0A%23%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86%0A&url=https://hyde142857.github.io/sfv-lounge"
+  );
+
   launchNewIssue();
+  expect(actualUrl).toEqual(
+    GITHUB_REPOS_URL + "/issues"
+  );
+
   launchGithub();
+  expect(actualUrl).toEqual(
+    GITHUB_REPOS_URL
+  );
+
+  openSpy.mockRestore();
 });
