@@ -26,7 +26,7 @@ const LpRankList: { [key: string]: number } = {
   "[UltraDiamond]": 25000,
   "[Master]": 30000,
   "[GrandMaster]": 35000,
-  "[UltraGrandMaster]": 100000,
+  "[UltimateGrandMaster]": 100000,
   "[Warload]": 300000,
 };
 
