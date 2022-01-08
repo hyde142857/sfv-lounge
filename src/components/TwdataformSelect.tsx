@@ -9,7 +9,7 @@ export type TwdataformSelectProps = {
 
 function TwdataformSelect(props: TwdataformSelectProps) {
   return (
-    <Form.Group className="mb-3">
+    <Form.Group className="mb-3" controlId={props.label}>
       <Form.Label>{props.label}</Form.Label>
       <Form.Select
         onChange={props.onChange}
