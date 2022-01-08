@@ -26,7 +26,7 @@ function TweetFormPage() {
       }
     />
     <TwdataformText
-      label="LP (数字だけ入れるとランク名が保管されます。)" value={twdata.lp}
+      label="LP (数字だけ入れるとランク名が補完されます。)" value={twdata.lp}
       onChange={
         e => { setTwdata({ ...twdata, lp: e.target.value }); }
       }
