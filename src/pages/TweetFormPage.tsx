@@ -26,7 +26,8 @@ function TweetFormPage() {
       }
     />
     <TwdataformText
-      label="LP (数字だけ入れるとランク名が補完されます。)" value={twdata.lp}
+      label="LP" value={twdata.lp}
+      comment="(数字だけ入れるとランク名が補完されます。)"
       onChange={
         e => { setTwdata({ ...twdata, lp: e.target.value }); }
       }
@@ -105,8 +106,8 @@ function TweetFormPage() {
       }
     />
     <TwdataformText
-      label="URL (空欄時,本ツールのURLになります。)"
-      value={twdata.url}
+      label="URL" value={twdata.url}
+      comment="(空欄時,本ツールのURLになります。)"
       onChange={
         e => { setTwdata({ ...twdata, url: e.target.value }); }
       }

@@ -10,7 +10,7 @@ export type TwdataformTextareaProps = {
 
 function TwdataformTextarea(props: TwdataformTextareaProps) {
   return (
-    <Form.Group className="mb-3">
+    <Form.Group className="mb-3" controlId={props.label}>
       <Form.Label>{props.label}</Form.Label>
       <Form.Control
         as="textarea" rows={3}
