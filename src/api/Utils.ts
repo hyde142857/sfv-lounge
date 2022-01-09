@@ -170,7 +170,7 @@ export function TweetDataGetDefault(){
 }
 
 export function loadLocalStorage() {
-  let twdata: TweetData = TweetDataGetDefault();
+  const twdata: TweetData = TweetDataGetDefault();
   twdata.message = localStorage.getItem('sfvlounge_roommatch.message') || "";
   twdata.fightingId = localStorage.getItem('sfvlounge_roommatch.fightingid') || "";
   twdata.charactor = localStorage.getItem('sfvlounge_roommatch.charactor') || "";
