@@ -1,16 +1,8 @@
 import { useState } from 'react';
-import { Props, TweetData } from '../types/Defs';
-import { GetTweetText,GetUrl } from '../api/Utils';
+import { Props } from '../types/Defs';
+import { copyClipboard } from '../api/Utils';
 import { createButton,createSvgIcon } from 'react-social-login-buttons';
 import { Modal, Button } from 'react-bootstrap';
-
-function copyClipboard(twdata: TweetData, hundleShow: () => void) {
-  const text = GetTweetText(twdata) + GetUrl(twdata);
-
-  navigator.clipboard.writeText(text).then(() => {
-    hundleShow();
-  });
-}
 
 function getSvgIcon() {
   return (
