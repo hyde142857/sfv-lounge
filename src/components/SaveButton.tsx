@@ -1,10 +1,12 @@
+import { useState } from 'react';
 import { Props, TweetData } from '../types/Defs';
 import { saveLocalStorage } from '../api/Utils';
 import { createButton,createSvgIcon } from 'react-social-login-buttons';
+import { Modal, Button } from 'react-bootstrap';
 
-function saveImpl(twdata: TweetData) {
+function saveImpl(twdata: TweetData, handleShow:() => void) {
   saveLocalStorage(twdata);
-  alert('保存しました。');
+  handleShow();
 }
 
 function getSvgIcon() {
@@ -27,9 +29,25 @@ const ButtonComp = createButton(
 
 
 function SaveButton(props: Props) {
-  return (
-    <ButtonComp onClick={() => saveImpl(props.twdata)} />
-  );
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (<>
+    <ButtonComp onClick={() => saveImpl(props.twdata, handleShow)} />
+    <Modal show={show} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>ブラウザにデータ保存</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>保存しました。</Modal.Body>
+      <Modal.Footer>
+        <Button variant="primary" onClick={handleClose}>
+          Close
+        </Button>
+      </Modal.Footer>
+    </Modal>
+  </>);
 }
 
 export default SaveButton;

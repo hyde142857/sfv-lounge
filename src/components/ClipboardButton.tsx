@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import { Props, TweetData } from '../types/Defs';
 import { GetTweetText,GetUrl } from '../api/Utils';
 import { createButton,createSvgIcon } from 'react-social-login-buttons';
+import { Modal, Button } from 'react-bootstrap';
 
-function copyClipboard(twdata: TweetData) {
+function copyClipboard(twdata: TweetData, hundleShow: () => void) {
   const text = GetTweetText(twdata) + GetUrl(twdata);
 
   navigator.clipboard.writeText(text).then(function () {
-    alert('クリップボードにコピーしました。ペーストしてご利用ください。');
+    hundleShow();
   });
 }
 
@@ -29,11 +31,27 @@ const ButtonComp = createButton(
 );
 
 function ClipboardButton(props: Props) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
-    <div className="d-grid gap-2">
-      <ButtonComp onClick={() => copyClipboard(props.twdata)} />
+    <>
+      <ButtonComp onClick={() => copyClipboard(props.twdata, handleShow)} />
       <span>LINEやDiscordから募集する際、活用ください。</span>
-    </div> 
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>クリップボードにコピー</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>クリップボードにコピーしました。ペーストしてご利用ください。</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 }
 
