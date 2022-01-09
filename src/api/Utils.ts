@@ -36,7 +36,7 @@ export function GetLpRank(lp: string) {
     return "";
   }
   const lpnum = Number(lp);
-  for (let k in LpRankList) {
+  for (const k in LpRankList) {
     if (LpRankList[k] <= lpnum) {
       rank = k;
     }
@@ -95,7 +95,7 @@ export function GetTweetText(twdata: TweetData) {
   twtext += "【ID】" + twdata.fightingId + "\n";
   twtext += GetTweetTextCharactor(twdata.charactor);
   twtext += GetTweetTextLp(twdata.lp);
-  twtext += GetTweetTextGame(twdata.gameround,twdata.gametime);
+  twtext += GetTweetTextGame(twdata.gameround, twdata.gametime);
   twtext += "【連戦】" + twdata.game + twdata.gameset + "\n";
   twtext += "【キャラセレ】" + twdata.charactorSelect + "\n";
   twtext += "【ハード】" + twdata.hardware + "\n";
@@ -106,33 +106,33 @@ export function GetTweetText(twdata: TweetData) {
   return (twtext);
 }
 
-export function GetUrl(twdata:TweetData){
+export function GetUrl(twdata: TweetData) {
   let url = GITHUB_PAGES_URL;
-  if ( twdata.url !== ""){
+  if (twdata.url !== "") {
     url = twdata.url;
   }
   return url;
 }
 
-export function submitTweet(twdata:TweetData){
+export function submitTweet(twdata: TweetData) {
   const twdata_uri = encodeURIComponent(GetTweetText(twdata));
-  let url = GetUrl(twdata);
+  const url = GetUrl(twdata);
   window.open("https://twitter.com/intent/tweet?text=" + twdata_uri + "&url=" + url, "_blank");
 }
 
 export function launchTwitterLive() {
-  window.open( "https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live", "_blank");
+  window.open("https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live", "_blank");
 }
 
 export function launchNewIssue() {
-  window.open( GITHUB_REPOS_URL + "/issues", "_blank");
+  window.open(GITHUB_REPOS_URL + "/issues", "_blank");
 }
 
 export function launchGithub() {
-  window.open( GITHUB_REPOS_URL, "_blank");
+  window.open(GITHUB_REPOS_URL, "_blank");
 }
 
-export function saveLocalStorage(twdata:TweetData){
+export function saveLocalStorage(twdata: TweetData) {
   localStorage.setItem('sfvlounge_roommatch.message', twdata.message);
   localStorage.setItem('sfvlounge_roommatch.fightingid', twdata.fightingId);
   localStorage.setItem('sfvlounge_roommatch.charactor', twdata.charactor);
@@ -149,8 +149,8 @@ export function saveLocalStorage(twdata:TweetData){
   localStorage.setItem('sfvlounge_roommatch.comment', twdata.comment);
 }
 
-export function TweetDataGetDefault(){
-  let twdata: TweetData = {
+export function TweetDataGetDefault() {
+  const twdata: TweetData = {
     message: "",
     fightingId: "",
     charactor: "",
@@ -170,7 +170,7 @@ export function TweetDataGetDefault(){
 }
 
 export function loadLocalStorage() {
-  let twdata: TweetData = TweetDataGetDefault();
+  const twdata: TweetData = TweetDataGetDefault();
   twdata.message = localStorage.getItem('sfvlounge_roommatch.message') || "";
   twdata.fightingId = localStorage.getItem('sfvlounge_roommatch.fightingid') || "";
   twdata.charactor = localStorage.getItem('sfvlounge_roommatch.charactor') || "";
