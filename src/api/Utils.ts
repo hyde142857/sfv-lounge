@@ -36,7 +36,7 @@ export function GetLpRank(lp: string) {
     return "";
   }
   const lpnum = Number(lp);
-  for (let k in LpRankList) {
+  for (const k in LpRankList) {
     if (LpRankList[k] <= lpnum) {
       rank = k;
     }
