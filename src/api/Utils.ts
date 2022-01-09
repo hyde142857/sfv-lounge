@@ -95,7 +95,7 @@ export function GetTweetText(twdata: TweetData) {
   twtext += "【ID】" + twdata.fightingId + "\n";
   twtext += GetTweetTextCharactor(twdata.charactor);
   twtext += GetTweetTextLp(twdata.lp);
-  twtext += GetTweetTextGame(twdata.gameround,twdata.gametime);
+  twtext += GetTweetTextGame(twdata.gameround, twdata.gametime);
   twtext += "【連戦】" + twdata.game + twdata.gameset + "\n";
   twtext += "【キャラセレ】" + twdata.charactorSelect + "\n";
   twtext += "【ハード】" + twdata.hardware + "\n";
@@ -106,9 +106,9 @@ export function GetTweetText(twdata: TweetData) {
   return (twtext);
 }
 
-export function GetUrl(twdata:TweetData){
+export function GetUrl(twdata: TweetData) {
   let url = GITHUB_PAGES_URL;
-  if ( twdata.url !== ""){
+  if (twdata.url !== "") {
     url = twdata.url;
   }
   return url;
@@ -125,14 +125,14 @@ export function launchTwitterLive() {
 }
 
 export function launchNewIssue() {
-  window.open( GITHUB_REPOS_URL + "/issues", "_blank");
+  window.open(GITHUB_REPOS_URL + "/issues", "_blank");
 }
 
 export function launchGithub() {
-  window.open( GITHUB_REPOS_URL, "_blank");
+  window.open(GITHUB_REPOS_URL, "_blank");
 }
 
-export function saveLocalStorage(twdata:TweetData){
+export function saveLocalStorage(twdata: TweetData) {
   localStorage.setItem('sfvlounge_roommatch.message', twdata.message);
   localStorage.setItem('sfvlounge_roommatch.fightingid', twdata.fightingId);
   localStorage.setItem('sfvlounge_roommatch.charactor', twdata.charactor);
@@ -149,7 +149,7 @@ export function saveLocalStorage(twdata:TweetData){
   localStorage.setItem('sfvlounge_roommatch.comment', twdata.comment);
 }
 
-export function TweetDataGetDefault(){
+export function TweetDataGetDefault() {
   const twdata: TweetData = {
     message: "",
     fightingId: "",
