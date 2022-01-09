@@ -150,7 +150,7 @@ export function saveLocalStorage(twdata:TweetData){
 }
 
 export function TweetDataGetDefault(){
-  let twdata: TweetData = {
+  const twdata: TweetData = {
     message: "",
     fightingId: "",
     charactor: "",
