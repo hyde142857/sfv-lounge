@@ -16,7 +16,7 @@ function ClipboardButton(props: Props) {
       <Button variant="secondary" size="lg" onClick={() => copyClipboard(props.twdata)}>
         クリップボードにコピー
       </Button>
-      <span>LINEやDiscordへ応募する際、活用ください。</span>
+      <span>LINEやDiscordから募集する際、活用ください。</span>
     </div>
   );
 }
