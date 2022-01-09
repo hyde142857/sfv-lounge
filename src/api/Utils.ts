@@ -132,6 +132,16 @@ export function launchGithub() {
   window.open(GITHUB_REPOS_URL, "_blank");
 }
 
+export function copyClipboard(twdata: TweetData, hundleShow: () => void) {
+  const text = GetTweetText(twdata) + GetUrl(twdata);
+
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => {
+      hundleShow();
+    });
+  }
+}
+
 export function saveLocalStorage(twdata: TweetData) {
   localStorage.setItem('sfvlounge_roommatch.message', twdata.message);
   localStorage.setItem('sfvlounge_roommatch.fightingid', twdata.fightingId);
