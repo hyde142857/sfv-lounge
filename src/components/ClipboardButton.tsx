@@ -7,7 +7,7 @@ import { Modal, Button } from 'react-bootstrap';
 function copyClipboard(twdata: TweetData, hundleShow: () => void) {
   const text = GetTweetText(twdata) + GetUrl(twdata);
 
-  navigator.clipboard.writeText(text).then(function () {
+  navigator.clipboard.writeText(text).then(() => {
     hundleShow();
   });
 }
