@@ -6,6 +6,7 @@ import {
   TweetPreview, SaveButton, TweetButton,
   TwdataformText, TwdataformTextarea, TwdataformSelect
 } from '../components/';
+import ClipboardButton from '../components/ClipboardButton';
 
 function TweetFormPage() {
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
@@ -132,8 +133,13 @@ function TweetFormPage() {
     <Form.Group className="mb-3">
       <SaveButton twdata={twdata} />
     </Form.Group>
+    <hr />
     <Form.Group className="mb-3">
       <TweetButton twdata={twdata} />
+    </Form.Group>
+    <hr />
+    <Form.Group className="mb-3">
+      <ClipboardButton twdata={twdata} />
     </Form.Group>
   </Form>
   );
