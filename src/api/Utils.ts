@@ -125,7 +125,8 @@ export function launchTwitterLive() {
 }
 
 export function launchNewIssue() {
-  window.open(GITHUB_REPOS_URL + "/issues", "_blank");
+  const text_uri = encodeURIComponent("スト5ラウンジ募集ツール(@hyde142857)\n▽▽▽ 要望などを記載ください。 ▽▽▽\n");
+  window.open("https://twitter.com/intent/tweet?text=" + text_uri, "_blank");
 }
 
 export function launchGithub() {
