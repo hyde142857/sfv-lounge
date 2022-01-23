@@ -18,7 +18,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
     opts.push({ name:opt, id:opt });
   }
 
-  const selected = props.value.split(',');
+  const selected = props.value.replace("　"," ").split(' ');
   let selected_opts = [];
   if (props.value !== "") {
     for (const opt of selected) {
@@ -32,7 +32,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
       lselected.push(opt.id);
     }
     const l_onChange = props.onChange || nop;
-    var val = lselected.join(', ');
+    var val = lselected.join(' ');
     l_onChange(val);
   }
 
