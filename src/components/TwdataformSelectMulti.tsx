@@ -53,6 +53,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
         onSelect={onSelect}
         onRemove={onRemove}
         displayValue="name"
+        placeholder="選択してください"
       />
     </Form.Group>
   );

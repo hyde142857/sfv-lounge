@@ -21,12 +21,6 @@ function TweetFormPage() {
       isInvalid={FightingIdIsInvalid(twdata)}
       invalidFeedback="Fighter's IDの入力は、必須です。"
     />
-    <TwdataformText
-      label="キャラ" value={twdata.charactor}
-      onChange={
-        e => { setTwdata({ ...twdata, charactor: e.target.value }); }
-      }
-    />
     <TwdataformSelectMulti
       label="キャラ" value={twdata.charactor}
       options={[
