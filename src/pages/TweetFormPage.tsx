@@ -7,6 +7,7 @@ import {
   TwdataformText, TwdataformTextarea, TwdataformSelect
 } from '../components/';
 import ClipboardButton from '../components/ClipboardButton';
+import TwdataformSelectMulti from '../components/TwdataformSelectMulti';
 
 function TweetFormPage() {
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
@@ -24,6 +25,13 @@ function TweetFormPage() {
       label="キャラ" value={twdata.charactor}
       onChange={
         e => { setTwdata({ ...twdata, charactor: e.target.value }); }
+      }
+    />
+    <TwdataformSelectMulti
+      label="キャラ" value={twdata.charactor}
+      options={["リュウ", "ケン", "豪鬼"]}
+      onChange={
+        val => { setTwdata({ ...twdata, charactor: val }); }
       }
     />
     <TwdataformText
