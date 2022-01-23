@@ -142,11 +142,21 @@ function TweetFormPage() {
     </Row>
     <TwdataformText
       label="URL" value={twdata.url}
-      comment="(空欄時,本ツールのURLになります。)"
       onChange={
         e => { setTwdata({ ...twdata, url: e.target.value }); }
       }
     />
+    <Form.Group className="mb-3">
+      <Form.Check
+        type="checkbox"
+        id="attachToolUrl"
+        label="ツイートに本ツールのURLを付与して、応援する。(上記URLが空欄の時のみ有効です。)"
+        checked={twdata.attachToolUrl}
+        onChange={
+          e => { setTwdata({ ...twdata, attachToolUrl: e.target.checked }); }
+        }
+      />
+    </Form.Group>
     <TwdataformTextarea
       label="先頭メッセージ"
       value={twdata.message}
