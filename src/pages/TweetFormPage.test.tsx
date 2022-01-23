@@ -13,14 +13,6 @@ test('form test', () => {
   ).toHaveValue('hogehoge');
 
   fireEvent.change(
-    screen.getByLabelText('キャラ'),
-    { target: { value: 'リュウ' } }
-  );
-  expect(
-    screen.getByLabelText('キャラ'),
-  ).toHaveValue('リュウ');
-
-  fireEvent.change(
     screen.getByLabelText('LP'),
     { target: { value: '1000' } }
   );

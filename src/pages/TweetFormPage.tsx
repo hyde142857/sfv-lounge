@@ -7,6 +7,7 @@ import {
   TwdataformText, TwdataformTextarea, TwdataformSelect
 } from '../components/';
 import ClipboardButton from '../components/ClipboardButton';
+import TwdataformSelectMulti from '../components/TwdataformSelectMulti';
 
 function TweetFormPage() {
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
@@ -20,10 +21,17 @@ function TweetFormPage() {
       isInvalid={FightingIdIsInvalid(twdata)}
       invalidFeedback="Fighter's IDの入力は、必須です。"
     />
-    <TwdataformText
+    <TwdataformSelectMulti
       label="キャラ" value={twdata.charactor}
+      options={[
+        "リュウ", "春麗", "ナッシュ", "ベガ", "キャミィ", "バーディー", "ケン", "ネカリ",
+        "バルログ", "レインボー・ミカ", "ラシード", "かりん", "ザンギエフ", "ララ", "ダルシム", "ファン",
+        "アレックス", "ガイル", "いぶき", "バイソン", "ジュリ", "ユリアン", "豪鬼",
+        "コーリン", "エド", "アビゲイル", "メナト", "是空", "さくら", "ブランカ", "ファルケ", "コーディ", "G", "サガット",
+        "影なる者", "エドモンド本田", "ルシア", "ギル", "セス", "オロ", "風間あきら", "ルーク"
+      ]}
       onChange={
-        e => { setTwdata({ ...twdata, charactor: e.target.value }); }
+        val => { setTwdata({ ...twdata, charactor: val }); }
       }
     />
     <TwdataformText
