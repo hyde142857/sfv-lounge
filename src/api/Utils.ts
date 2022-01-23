@@ -89,6 +89,18 @@ function GetTweetTextComment(comment: string) {
   return "";
 }
 
+function GetTweetTextPleyerMax(playermax: string, playerprivate: string) {
+  let text = "";
+  if (playermax !== "") {
+    text = "【部屋人数】" + playermax + "人";
+    if (playerprivate !== "") {
+      text += " 内プライベート" + playerprivate + "人";
+    }
+    return text + "\n";
+  }
+  return "";
+}
+
 export function GetTweetText(twdata: TweetData) {
   let twtext = "";
   twtext += GetTweetTextMessage(twdata.message);
@@ -96,6 +108,7 @@ export function GetTweetText(twdata: TweetData) {
   twtext += GetTweetTextCharactor(twdata.charactor);
   twtext += GetTweetTextLp(twdata.lp);
   twtext += GetTweetTextGame(twdata.gameround, twdata.gametime);
+  twtext += GetTweetTextPleyerMax(twdata.loungePlayerMax, twdata.loungePlayerPrivate);
   twtext += "【連戦】" + twdata.game + twdata.gameset + "\n";
   twtext += "【キャラセレ】" + twdata.charactorSelect + "\n";
   twtext += "【ハード】" + twdata.hardware + "\n";
@@ -142,12 +155,23 @@ export function copyClipboard(twdata: TweetData, hundleShow: () => void) {
     });
   }
 }
-
-export function saveLocalStorage(twdata: TweetData) {
+function saveLocalStorageTweettext(twdata: TweetData) {
   localStorage.setItem('sfvlounge_roommatch.message', twdata.message);
+  localStorage.setItem('sfvlounge_roommatch.url', twdata.url);
+  localStorage.setItem('sfvlounge_roommatch.comment', twdata.comment);
+}
+
+function saveLocalStoragePlayerdata(twdata: TweetData) {
   localStorage.setItem('sfvlounge_roommatch.fightingid', twdata.fightingId);
   localStorage.setItem('sfvlounge_roommatch.charactor', twdata.charactor);
   localStorage.setItem('sfvlounge_roommatch.lp', twdata.lp);
+}
+
+export function saveLocalStorage(twdata: TweetData) {
+  saveLocalStorageTweettext(twdata);
+  saveLocalStoragePlayerdata(twdata);
+  localStorage.setItem('sfvlounge_roommatch.loungeplayermax', twdata.loungePlayerMax);
+  localStorage.setItem('sfvlounge_roommatch.loungeplayerprivate', twdata.loungePlayerPrivate);
   localStorage.setItem('sfvlounge_roommatch.gameround', twdata.gameround);
   localStorage.setItem('sfvlounge_roommatch.gametime', twdata.gametime);
   localStorage.setItem('sfvlounge_roommatch.game', twdata.game);
@@ -156,8 +180,6 @@ export function saveLocalStorage(twdata: TweetData) {
   localStorage.setItem('sfvlounge_roommatch.hardware', twdata.hardware);
   localStorage.setItem('sfvlounge_roommatch.speedlimit', twdata.speedlimit);
   localStorage.setItem('sfvlounge_roommatch.passcode', twdata.passcode);
-  localStorage.setItem('sfvlounge_roommatch.url', twdata.url);
-  localStorage.setItem('sfvlounge_roommatch.comment', twdata.comment);
 }
 
 export function TweetDataGetDefault() {
@@ -166,6 +188,8 @@ export function TweetDataGetDefault() {
     fightingId: "",
     charactor: "",
     lp: "",
+    loungePlayerMax: "",
+    loungePlayerPrivate: "",
     gameround: "3ラウンド",
     gametime: "99秒",
     game: "1本先取",
@@ -180,21 +204,27 @@ export function TweetDataGetDefault() {
   return twdata;
 }
 
+function localstorageGetItem(key: string, defaultval: string):string {
+  return localStorage.getItem(key) || defaultval;
+}
+
 export function loadLocalStorage() {
   const twdata: TweetData = TweetDataGetDefault();
-  twdata.message = localStorage.getItem('sfvlounge_roommatch.message') || "";
-  twdata.fightingId = localStorage.getItem('sfvlounge_roommatch.fightingid') || "";
-  twdata.charactor = localStorage.getItem('sfvlounge_roommatch.charactor') || "";
-  twdata.lp = localStorage.getItem('sfvlounge_roommatch.lp') || "";
-  twdata.gameround = localStorage.getItem('sfvlounge_roommatch.gameround') || "3ラウンド";
-  twdata.gametime = localStorage.getItem('sfvlounge_roommatch.gametime') || "99秒";
-  twdata.game = localStorage.getItem('sfvlounge_roommatch.game') || "1本先取";
-  twdata.gameset = localStorage.getItem('sfvlounge_roommatch.gameset') || "";
-  twdata.charactorSelect = localStorage.getItem('sfvlounge_roommatch.charactorselect') || "OFF";
-  twdata.hardware = localStorage.getItem('sfvlounge_roommatch.hardware') || "どっちもOK";
-  twdata.speedlimit = localStorage.getItem('sfvlounge_roommatch.speedlimit') || "OFF";
-  twdata.passcode = localStorage.getItem('sfvlounge_roommatch.passcode') || "";
-  twdata.url = localStorage.getItem('sfvlounge_roommatch.url') || "";
-  twdata.comment = localStorage.getItem('sfvlounge_roommatch.comment') || "";
+  twdata.message = localstorageGetItem('sfvlounge_roommatch.message', "");
+  twdata.fightingId = localstorageGetItem('sfvlounge_roommatch.fightingid', "");
+  twdata.charactor = localstorageGetItem('sfvlounge_roommatch.charactor', "");
+  twdata.lp = localstorageGetItem('sfvlounge_roommatch.lp', "");
+  twdata.loungePlayerMax = localstorageGetItem('sfvlounge_roommatch.loungeplayermax', "");
+  twdata.loungePlayerPrivate = localstorageGetItem('sfvlounge_roommatch.loungeplayerprivate', "");
+  twdata.gameround = localstorageGetItem('sfvlounge_roommatch.gameround', "3ラウンド");
+  twdata.gametime = localstorageGetItem('sfvlounge_roommatch.gametime', "99秒");
+  twdata.game = localstorageGetItem('sfvlounge_roommatch.game', "1本先取");
+  twdata.gameset = localstorageGetItem('sfvlounge_roommatch.gameset', "");
+  twdata.charactorSelect = localstorageGetItem('sfvlounge_roommatch.charactorselect', "OFF");
+  twdata.hardware = localstorageGetItem('sfvlounge_roommatch.hardware', "どっちもOK");
+  twdata.speedlimit = localstorageGetItem('sfvlounge_roommatch.speedlimit', "OFF");
+  twdata.passcode = localstorageGetItem('sfvlounge_roommatch.passcode', "");
+  twdata.url = localstorageGetItem('sfvlounge_roommatch.url', "");
+  twdata.comment = localstorageGetItem('sfvlounge_roommatch.comment', "");
   return twdata;
 }
