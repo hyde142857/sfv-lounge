@@ -44,6 +44,26 @@ function TweetFormPage() {
     <Row>
       <Col>
         <TwdataformSelect
+          label="ラウンジ人数" value={twdata.loungePlayerMax}
+          options={["", "2", "3", "4", "5", "6", "7", "8"]}
+          onChange={
+            e => { setTwdata({ ...twdata, loungePlayerMax: e.target.value }); }
+          }
+        />
+      </Col>
+      <Col>
+        <TwdataformSelect
+          label="プライベートスロット" value={twdata.loungePlayerPrivate}
+          options={["", "1", "2", "3", "4", "5", "6", "7"]}
+          onChange={
+            e => { setTwdata({ ...twdata, loungePlayerPrivate: e.target.value }); }
+          }
+        />
+      </Col>
+    </Row>
+    <Row>
+      <Col>
+        <TwdataformSelect
           label="ラウンド" value={twdata.gameround}
           options={["1ラウンド", "3ラウンド", "5ラウンド"]}
           onChange={
@@ -81,13 +101,6 @@ function TweetFormPage() {
         />
       </Col>
     </Row>
-    <TwdataformSelect
-      label="キャラセレ" value={twdata.charactorSelect}
-      options={["ON", "OFF"]}
-      onChange={
-        e => { setTwdata({ ...twdata, charactorSelect: e.target.value }); }
-      }
-    />
     <Row>
       <Col>
         <TwdataformSelect
@@ -108,12 +121,25 @@ function TweetFormPage() {
         />
       </Col>
     </Row>
-    <TwdataformText
-      label="パス" value={twdata.passcode}
-      onChange={
-        e => { setTwdata({ ...twdata, passcode: e.target.value }); }
-      }
-    />
+    <Row>
+      <Col>
+        <TwdataformSelect
+          label="キャラセレ" value={twdata.charactorSelect}
+          options={["ON", "OFF"]}
+          onChange={
+            e => { setTwdata({ ...twdata, charactorSelect: e.target.value }); }
+          }
+        />
+      </Col>
+      <Col>
+        <TwdataformText
+          label="パス" value={twdata.passcode}
+          onChange={
+            e => { setTwdata({ ...twdata, passcode: e.target.value }); }
+          }
+        />
+      </Col>
+    </Row>
     <TwdataformText
       label="URL" value={twdata.url}
       comment="(空欄時,本ツールのURLになります。)"

@@ -21,6 +21,22 @@ test('form test', () => {
   ).toHaveValue('1000');
 
   fireEvent.change(
+    screen.getByLabelText('ラウンジ人数'),
+    { target: { value: '4' } }
+  );
+  expect(
+    screen.getByLabelText('ラウンジ人数'),
+  ).toHaveValue('4');
+
+  fireEvent.change(
+    screen.getByLabelText('プライベートスロット'),
+    { target: { value: '1' } }
+  );
+  expect(
+    screen.getByLabelText('プライベートスロット'),
+  ).toHaveValue('1');
+
+  fireEvent.change(
     screen.getByLabelText('ラウンド'),
     { target: { value: '1ラウンド' } }
   );

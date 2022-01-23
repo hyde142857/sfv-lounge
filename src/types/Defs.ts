@@ -6,6 +6,8 @@ export interface TweetData {
   fightingId: string;
   charactor: string;
   lp: string;
+  loungePlayerMax: string;
+  loungePlayerPrivate: string;
   gameround: string;
   gametime: string;
   game: string;
