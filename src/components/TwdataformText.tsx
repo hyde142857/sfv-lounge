@@ -1,12 +1,14 @@
 import { Form } from 'react-bootstrap';
+import { TweetData } from '../types/Defs';
 
 export type TwdataformTextProps = {
   label: string;
-  value: string;
   comment?: string;
   isInvalid?: boolean;
   invalidFeedback?: string;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
+  twdataKey: keyof TweetData;
+  twdata: TweetData;
+  updateTwdata: (key: keyof TweetData, val: string) => void;
 }
 
 function TwdataformText(props: TwdataformTextProps) {
@@ -16,8 +18,10 @@ function TwdataformText(props: TwdataformTextProps) {
       <Form.Label>{props.label}</Form.Label> <span>{comment}</span>
       <Form.Control
         type="text"
-        onChange={props.onChange}
-        value={props.value}
+        onChange={
+          e => { props.updateTwdata(props.twdataKey, e.target.value); }
+        }
+        value={props.twdata[props.twdataKey]}
         isInvalid={props.isInvalid} />
       <div className="invalid-feedback">{props.invalidFeedback}</div>
     </Form.Group>

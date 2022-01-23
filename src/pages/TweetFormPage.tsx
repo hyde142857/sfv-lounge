@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Row, Col } from 'react-bootstrap';
 import { TweetData } from '../types/Defs';
-import { FightingIdIsInvalid, loadLocalStorage } from '../api/Utils';
+import { FightingIdIsInvalid, loadLocalStorage, string2boolean } from '../api/Utils';
 import {
   TweetPreview, SaveButton, TweetButton,
   TwdataformText, TwdataformTextarea, TwdataformSelect
@@ -12,12 +12,15 @@ import TwdataformSelectMulti from '../components/TwdataformSelectMulti';
 function TweetFormPage() {
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
 
+  const updateTwdata = (key: keyof TweetData, val: string) => {
+    let ltwdata: TweetData = { ...twdata };
+    ltwdata[key] = val;
+    setTwdata(ltwdata);
+  }
+
   return (<Form>
-    <TwdataformText
-      label="Fighter's ID" value={twdata.fightingId}
-      onChange={
-        e => { setTwdata({ ...twdata, fightingId: e.target.value }); }
-      }
+    <TwdataformText twdata={twdata} updateTwdata={updateTwdata}
+      label="Fighter's ID" twdataKey='fightingId'
       isInvalid={FightingIdIsInvalid(twdata)}
       invalidFeedback="Fighter's IDの入力は、必須です。"
     />
@@ -34,12 +37,9 @@ function TweetFormPage() {
         val => { setTwdata({ ...twdata, charactor: val }); }
       }
     />
-    <TwdataformText
-      label="LP" value={twdata.lp}
+    <TwdataformText twdata={twdata} updateTwdata={updateTwdata}
+      label="LP" twdataKey='lp'
       comment="(数字だけ入れるとランク名が補完されます。)"
-      onChange={
-        e => { setTwdata({ ...twdata, lp: e.target.value }); }
-      }
     />
     <Row>
       <Col>
@@ -132,28 +132,22 @@ function TweetFormPage() {
         />
       </Col>
       <Col>
-        <TwdataformText
-          label="パス" value={twdata.passcode}
-          onChange={
-            e => { setTwdata({ ...twdata, passcode: e.target.value }); }
-          }
+        <TwdataformText twdata={twdata} updateTwdata={updateTwdata}
+          label="パス" twdataKey='passcode'
         />
       </Col>
     </Row>
-    <TwdataformText
-      label="URL" value={twdata.url}
-      onChange={
-        e => { setTwdata({ ...twdata, url: e.target.value }); }
-      }
+    <TwdataformText twdata={twdata} updateTwdata={updateTwdata}
+      label="URL" twdataKey='url'
     />
     <Form.Group className="mb-3">
       <Form.Check
         type="checkbox"
         id="attachToolUrl"
         label="ツイートに本ツールのURLを付与して、応援する。(上記URLが空欄の時のみ有効です。)"
-        checked={twdata.attachToolUrl}
+        checked={string2boolean(twdata.attachToolUrl, true)}
         onChange={
-          e => { setTwdata({ ...twdata, attachToolUrl: e.target.checked }); }
+          e => { updateTwdata('attachToolUrl', String(e.target.checked)); }
         }
       />
     </Form.Group>

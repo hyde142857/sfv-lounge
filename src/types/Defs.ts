@@ -17,7 +17,7 @@ export interface TweetData {
   speedlimit: string;
   passcode: string;
   url: string;
-  attachToolUrl: boolean;
+  attachToolUrl: string;
   comment: string;
 }
 
