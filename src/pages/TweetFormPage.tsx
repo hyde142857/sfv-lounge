@@ -29,7 +29,11 @@ function TweetFormPage() {
     />
     <TwdataformSelectMulti
       label="キャラ" value={twdata.charactor}
-      options={["リュウ", "ケン", "豪鬼"]}
+      options={[
+        "リュウ", "春麗", "ナッシュ", "ベガ", "キャミィ", "バーディー", "ケン", "ネカリ",
+        "バルログ", "レインボー・ミカ", "ラシード", "かりん", "ザンギエフ", "ララ", "ダルシム", "ファン",
+        "アレックス", "ガイル", "いぶき", "バイソン", "ジュリ", "ユリアン", "豪鬼",
+      ]}
       onChange={
         val => { setTwdata({ ...twdata, charactor: val }); }
       }
