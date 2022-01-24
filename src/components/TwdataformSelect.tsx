@@ -1,10 +1,12 @@
 import { Form } from "react-bootstrap";
+import { TweetData } from "../types/Defs";
 
 export type TwdataformSelectProps = {
   label: string;
-  value: string;
   options: string[];
-  onChange?: React.ChangeEventHandler<HTMLSelectElement>;
+  twdataKey: keyof TweetData;
+  twdata: TweetData;
+  updateTwdata: (key: keyof TweetData, val: string) => void;
 }
 
 function TwdataformSelect(props: TwdataformSelectProps) {
@@ -12,8 +14,10 @@ function TwdataformSelect(props: TwdataformSelectProps) {
     <Form.Group className="mb-3" controlId={props.label}>
       <Form.Label>{props.label}</Form.Label>
       <Form.Select
-        onChange={props.onChange}
-        value={props.value} >
+        value={props.twdata[props.twdataKey]}
+        onChange={
+          e => { props.updateTwdata(props.twdataKey, e.target.value); }
+        } >
         {
           props.options.map((opt) => <option key={opt}>{opt}</option>)
         }

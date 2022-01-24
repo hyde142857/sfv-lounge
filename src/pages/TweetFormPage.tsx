@@ -43,92 +43,65 @@ function TweetFormPage() {
     />
     <Row>
       <Col>
-        <TwdataformSelect
-          label="ラウンジ人数" value={twdata.loungePlayerMax}
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label="ラウンジ人数" twdataKey='loungePlayerMax'
           options={["", "2", "3", "4", "5", "6", "7", "8"]}
-          onChange={
-            e => { setTwdata({ ...twdata, loungePlayerMax: e.target.value }); }
-          }
         />
       </Col>
       <Col>
-        <TwdataformSelect
-          label="プライベートスロット" value={twdata.loungePlayerPrivate}
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label="プライベートスロット" twdataKey='loungePlayerPrivate'
           options={["", "1", "2", "3", "4", "5", "6", "7"]}
-          onChange={
-            e => { setTwdata({ ...twdata, loungePlayerPrivate: e.target.value }); }
-          }
         />
       </Col>
     </Row>
     <Row>
       <Col>
-        <TwdataformSelect
-          label="ラウンド" value={twdata.gameround}
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label="ラウンド" twdataKey='gameround'
           options={["1ラウンド", "3ラウンド", "5ラウンド"]}
-          onChange={
-            e => { setTwdata({ ...twdata, gameround: e.target.value }); }
-          }
         />
       </Col>
       <Col>
-        <TwdataformSelect
-          label="タイム" value={twdata.gametime}
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label="タイム" twdataKey='gametime'
           options={["60秒", "99秒"]}
-          onChange={
-            e => { setTwdata({ ...twdata, gametime: e.target.value }); }
-          }
         />
       </Col>
     </Row>
     <Row>
       <Col>
-        <TwdataformSelect
-          label="連戦設定" value={twdata.game}
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label="連戦設定" twdataKey='game'
           options={["1本先取", "2本先取", "3本先取", "5本先取", "10本先取"]}
-          onChange={
-            e => { setTwdata({ ...twdata, game: e.target.value }); }
-          }
         />
       </Col>
       <Col>
-        <TwdataformSelect
-          label="セット" value={twdata.gameset}
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label="セット" twdataKey='gameset'
           options={["", "x1", "x2", "x3", "x4", "x5", "xN"]}
-          onChange={
-            e => { setTwdata({ ...twdata, gameset: e.target.value }); }
-          }
         />
       </Col>
     </Row>
     <Row>
       <Col>
-        <TwdataformSelect
-          label="ハード" value={twdata.hardware}
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label="ハード" twdataKey='hardware'
           options={["どっちもOK", "PlayStationのみ", "PCのみ"]}
-          onChange={
-            e => { setTwdata({ ...twdata, hardware: e.target.value }); }
-          }
         />
       </Col>
       <Col>
-        <TwdataformSelect
-          label="通信制限" value={twdata.speedlimit}
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label="通信制限" twdataKey='speedlimit'
           options={["ON", "OFF"]}
-          onChange={
-            e => { setTwdata({ ...twdata, speedlimit: e.target.value }); }
-          }
         />
       </Col>
     </Row>
     <Row>
       <Col>
-        <TwdataformSelect
-          label="キャラセレ" value={twdata.charactorSelect}
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label="キャラセレ" twdataKey='charactorSelect'
           options={["ON", "OFF"]}
-          onChange={
-            e => { setTwdata({ ...twdata, charactorSelect: e.target.value }); }
-          }
         />
       </Col>
       <Col>
