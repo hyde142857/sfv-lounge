@@ -8,6 +8,7 @@ import {
 } from '../components/';
 import ClipboardButton from '../components/ClipboardButton';
 import TwdataformSelectMulti from '../components/TwdataformSelectMulti';
+import TwdataformCheck from '../components/TwdataformCheck';
 
 function TweetFormPage() {
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
@@ -110,17 +111,10 @@ function TweetFormPage() {
     <TwdataformText twdata={twdata} updateTwdata={updateTwdata}
       label="URL" twdataKey='url'
     />
-    <Form.Group className="mb-3">
-      <Form.Check
-        type="checkbox"
-        id="attachToolUrl"
-        label="ツイートに本ツールのURLを付与して、応援する。(上記URLが空欄の時のみ有効です。)"
-        checked={string2boolean(twdata.attachToolUrl, true)}
-        onChange={
-          e => { updateTwdata('attachToolUrl', String(e.target.checked)); }
-        }
-      />
-    </Form.Group>
+    <TwdataformCheck twdata={twdata} updateTwdata={updateTwdata}
+      label="ツイートに本ツールのURLを付与して、応援する。" twdataKey='attachToolUrl'
+      comment='(上記URLが空欄の時のみ有効です。)'
+    />
     <TwdataformTextarea twdata={twdata} updateTwdata={updateTwdata}
       label="先頭メッセージ" twdataKey='message'
     />
