@@ -123,7 +123,7 @@ export function GetUrl(twdata: TweetData) {
   if (twdata.url !== "") {
     return twdata.url;
   }
-  if (twdata.attachToolUrl) {
+  if (string2boolean(twdata.attachToolUrl, true)) {
     return GITHUB_PAGES_URL;
   }
   return "";
@@ -206,7 +206,7 @@ export function TweetDataGetDefault() {
     speedlimit: "OFF",
     passcode: "",
     url: "",
-    attachToolUrl: true,
+    attachToolUrl: "true",
     comment: "",
   };
   return twdata;
@@ -216,8 +216,7 @@ function localstorageGetItem(key: string, defaultval: string):string {
   return localStorage.getItem(key) || defaultval;
 }
 
-function localstorageGetItemBoolean(key: string, defaultval: boolean): boolean {
-  var booleanStr = localStorage.getItem(key) || String(defaultval);
+export function string2boolean(booleanStr: string, defaultval: boolean): boolean {
   if (booleanStr.toLowerCase() === String(!defaultval)) {
     return !defaultval;
   }
@@ -241,7 +240,7 @@ export function loadLocalStorage() {
   twdata.speedlimit = localstorageGetItem('sfvlounge_roommatch.speedlimit', "OFF");
   twdata.passcode = localstorageGetItem('sfvlounge_roommatch.passcode', "");
   twdata.url = localstorageGetItem('sfvlounge_roommatch.url', "");
-  twdata.attachToolUrl = localstorageGetItemBoolean('sfvlounge_roommatch.attachtoolurl', true);
+  twdata.attachToolUrl = localstorageGetItem('sfvlounge_roommatch.attachtoolurl', "true");
   twdata.comment = localstorageGetItem('sfvlounge_roommatch.comment', "");
   return twdata;
 }
