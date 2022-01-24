@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Form, Row, Col } from 'react-bootstrap';
 import { TweetData } from '../types/Defs';
-import { FightingIdIsInvalid, loadLocalStorage, string2boolean } from '../api/Utils';
+import { FightingIdIsInvalid, loadLocalStorage } from '../api/Utils';
 import {
   TweetPreview, SaveButton, TweetButton,
   TwdataformText, TwdataformTextarea, TwdataformSelect
