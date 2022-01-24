@@ -151,18 +151,11 @@ function TweetFormPage() {
         }
       />
     </Form.Group>
-    <TwdataformTextarea
-      label="先頭メッセージ"
-      value={twdata.message}
-      onChange={
-        e => { setTwdata({ ...twdata, message: e.target.value }); }
-      }
+    <TwdataformTextarea twdata={twdata} updateTwdata={updateTwdata}
+      label="先頭メッセージ" twdataKey='message'
     />
-    <TwdataformTextarea
-      label="コメント" value={twdata.comment}
-      onChange={
-        e => { setTwdata({ ...twdata, comment: e.target.value }); }
-      }
+    <TwdataformTextarea twdata={twdata} updateTwdata={updateTwdata}
+      label="コメント" twdataKey='comment'
     />
     <Form.Group className="mb-3">
       <Form.Label>プレビュー</Form.Label>
