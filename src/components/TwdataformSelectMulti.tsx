@@ -1,15 +1,13 @@
 import { Form } from "react-bootstrap";
 import Multiselect from 'multiselect-react-dropdown';
+import { TweetData } from "../types/Defs";
 
 export type TwdataformSelectMultiProps = {
   label: string;
-  value: string;
   options: string[];
-  onChange?: (val:string) => void;
-}
-
-function nop(val: string) {
-  // nop
+  twdataKey: keyof TweetData;
+  twdata: TweetData;
+  updateTwdata: (key: keyof TweetData, val: string) => void;
 }
 
 function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
@@ -18,9 +16,10 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
     opts.push({ name:opt, id:opt });
   }
 
-  const selected = props.value.replace("　"," ").split(' ');
+  const value = props.twdata[props.twdataKey];
+  const selected = value.replace("　"," ").split(' ');
   let selected_opts = [];
-  if (props.value !== "") {
+  if (value !== "") {
     for (const opt of selected) {
       selected_opts.push({ name: opt.trim(), id: opt.trim() });
     }
@@ -31,9 +30,8 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
     for (const opt of selectedList) {
       lselected.push(opt.id);
     }
-    const l_onChange = props.onChange || nop;
     var val = lselected.join(' ');
-    l_onChange(val);
+    props.updateTwdata(props.twdataKey,val);
   }
 
   const onSelect = (selectedList: any, selectedItem: any) => {
