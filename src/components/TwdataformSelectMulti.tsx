@@ -1,6 +1,8 @@
 import { Form } from "react-bootstrap";
-import Multiselect from 'multiselect-react-dropdown';
+import { Select, ModalCloseButton, MultiSelectOptionMarkup } from 'react-responsive-select';
 import { TweetData } from "../types/Defs";
+
+import 'react-responsive-select/dist/react-responsive-select.css';
 
 export type TwdataformSelectMultiProps = {
   label: string;
@@ -12,8 +14,9 @@ export type TwdataformSelectMultiProps = {
 
 function getOpts(props: TwdataformSelectMultiProps){
   let opts = [];
+  opts.push({ value: '', text: '選択なし' });
   for (const opt of props.options) {
-    opts.push({ name:opt, id:opt });
+    opts.push({ value: opt, text: opt, markup: <MultiSelectOptionMarkup text={opt} props={null} /> });
   }
   return opts;
 }
@@ -24,7 +27,7 @@ function getSelectedOpts(props: TwdataformSelectMultiProps){
   let selected_opts = [];
   if (value !== "") {
     for (const opt of selected) {
-      selected_opts.push({ name: opt.trim(), id: opt.trim() });
+      selected_opts.push(opt.trim());
     }
   }
   return selected_opts;
@@ -36,31 +39,23 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
 
   const onChange = (selectedList: any) => {
     const lselected = [];
-    for (const opt of selectedList) {
-      lselected.push(opt.id);
+    for (const opt of selectedList.options) {
+      lselected.push(opt.value);
     }
     var val = lselected.join(' ');
     props.updateTwdata(props.twdataKey,val);
   }
 
-  const onSelect = (selectedList: any, selectedItem: any) => {
-    onChange(selectedList);
-  };
-
-  const onRemove = (selectedList: any, removedItem: any) => {
-    onChange(selectedList);
-  };
-
   return (
     <Form.Group className="mb-3" controlId={props.label}>
       <Form.Label>{props.label}</Form.Label>
-      <Multiselect
-        options={opts}
+      <Select
+        multiselect={true}
+        name={props.twdataKey}
         selectedValues={selected_opts}
-        onSelect={onSelect}
-        onRemove={onRemove}
-        displayValue="name"
-        placeholder="選択してください"
+        modalCloseButton={<ModalCloseButton />}
+        options={opts}
+        onBlur={newValue => onChange(newValue)}
       />
     </Form.Group>
   );
