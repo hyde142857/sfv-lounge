@@ -3,12 +3,10 @@ import { Form, Row, Col } from 'react-bootstrap';
 import { TweetData } from '../types/Defs';
 import { FightingIdIsInvalid, loadLocalStorage } from '../api/Utils';
 import {
-  TweetPreview, SaveButton, TweetButton,
-  TwdataformText, TwdataformTextarea, TwdataformSelect
+  TweetPreview, SaveButton, TweetButton, ClipboardButton,
+  TwdataformText, TwdataformTextarea, TwdataformCheck,
+  TwdataformSelect, TwdataformSelectMulti
 } from '../components/';
-import ClipboardButton from '../components/ClipboardButton';
-import TwdataformSelectMulti from '../components/TwdataformSelectMulti';
-import TwdataformCheck from '../components/TwdataformCheck';
 
 function TweetFormPage() {
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
