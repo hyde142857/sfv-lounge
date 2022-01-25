@@ -10,12 +10,15 @@ export type TwdataformSelectMultiProps = {
   updateTwdata: (key: keyof TweetData, val: string) => void;
 }
 
-function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
+function getOpts(props: TwdataformSelectMultiProps){
   let opts = [];
   for (const opt of props.options) {
     opts.push({ name:opt, id:opt });
   }
+  return opts;
+}
 
+function getSelectedOpts(props: TwdataformSelectMultiProps){
   const value = props.twdata[props.twdataKey];
   const selected = value.replace("　"," ").split(' ');
   let selected_opts = [];
@@ -24,6 +27,12 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
       selected_opts.push({ name: opt.trim(), id: opt.trim() });
     }
   }
+  return selected_opts;
+}
+
+function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
+  let opts = getOpts(props);
+  let selected_opts = getSelectedOpts(props);
 
   const onChange = (selectedList: any) => {
     const lselected = [];
