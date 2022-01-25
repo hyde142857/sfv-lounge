@@ -17,7 +17,12 @@ function getOpts(props: TwdataformSelectMultiProps){
   let opts = [];
   opts.push({ value: '', text: '選択なし' });
   for (const opt of props.options) {
-    opts.push({ value: opt, text: opt, markup: <MultiSelectOptionMarkup text={opt} props={null} /> });
+    if (opt.startsWith("optHeader:")) {
+      const header = opt.substring("optHeader:".length);
+      opts.push({ value: undefined, text: header, optHeader: true });
+    } else {
+      opts.push({ value: opt, text: opt, markup: <MultiSelectOptionMarkup text={opt} props={null} /> });
+    }
   }
   return opts;
 }
