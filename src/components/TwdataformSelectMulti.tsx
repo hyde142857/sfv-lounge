@@ -22,13 +22,16 @@ function getOpts(props: TwdataformSelectMultiProps){
   return opts;
 }
 
-function getSelectedOpts(props: TwdataformSelectMultiProps){
+function getSelectedOpts(props: TwdataformSelectMultiProps) {
   const value = props.twdata[props.twdataKey];
-  const selected = value.replace("　"," ").split(' ');
-  let selected_opts = [];
+  const selected = value.replace("　", " ").split(' ');
+  let selected_opts: string[] = [];
   if (value !== "") {
     for (const opt of selected) {
-      selected_opts.push(opt.trim());
+      const opt_trimed = opt.trim();
+      if (props.options.includes(opt_trimed)) {
+        selected_opts.push(opt_trimed);
+      }
     }
   }
   return selected_opts;
