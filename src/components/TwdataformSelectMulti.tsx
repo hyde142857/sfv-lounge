@@ -9,6 +9,7 @@ export type TwdataformSelectMultiProps = {
   options: string[];
   twdataKey: keyof TweetData;
   twdata: TweetData;
+  comment?: string;
   updateTwdata: (key: keyof TweetData, val: string) => void;
 }
 
@@ -36,6 +37,7 @@ function getSelectedOpts(props: TwdataformSelectMultiProps){
 function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
   let opts = getOpts(props);
   let selected_opts = getSelectedOpts(props);
+  const comment = props.comment || "";
 
   const onChange = (selectedList: any) => {
     const lselected = [];
@@ -63,7 +65,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
 
   return (
     <Form.Group className="mb-3" controlId={props.label}>
-      <Form.Label>{props.label}</Form.Label>
+      <Form.Label>{props.label}</Form.Label> <span>{comment}</span>
       <Select
         multiselect={true}
         name={props.twdataKey}

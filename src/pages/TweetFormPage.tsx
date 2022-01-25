@@ -32,6 +32,7 @@ function TweetFormPage() {
         "コーリン", "エド", "アビゲイル", "メナト", "是空", "さくら", "ブランカ", "ファルケ", "コーディ", "G", "サガット",
         "影なる者", "エドモンド本田", "ルシア", "ギル", "セス", "オロ", "風間あきら", "ルーク"
       ]}
+      comment="(過去の入力が消えないときは、一度 選択なし を選択してください。)"
     />
     <TwdataformText twdata={twdata} updateTwdata={updateTwdata}
       label="LP" twdataKey='lp'
