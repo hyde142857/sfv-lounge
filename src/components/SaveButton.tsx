@@ -33,20 +33,21 @@ function SaveButton(props: Props) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  return (<>
-    <ButtonComp onClick={() => saveImpl(props.twdata, handleShow)} />
-    <Modal show={show} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>ブラウザにデータ保存</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>保存しました。</Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={handleClose}>
-          Close
-        </Button>
-      </Modal.Footer>
-    </Modal>
-  </>);
+  return (
+    <>
+      <ButtonComp onClick={() => saveImpl(props.twdata, handleShow)} />
+      <Modal show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-vcenter">ブラウザにデータ保存</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>保存しました。</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>);
 }
 
 export default SaveButton;

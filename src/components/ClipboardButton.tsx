@@ -31,9 +31,9 @@ function ClipboardButton(props: Props) {
     <>
       <ButtonComp onClick={() => copyClipboard(props.twdata, handleShow)} />
       <span>LINEやDiscordから募集する際、活用ください。</span>
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
         <Modal.Header closeButton>
-          <Modal.Title>クリップボードにコピー</Modal.Title>
+          <Modal.Title id="contained-modal-title-vcenter">クリップボードにコピー</Modal.Title>
         </Modal.Header>
         <Modal.Body>クリップボードにコピーしました。ペーストしてご利用ください。</Modal.Body>
         <Modal.Footer>
