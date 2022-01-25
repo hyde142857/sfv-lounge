@@ -39,11 +39,26 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
 
   const onChange = (selectedList: any) => {
     const lselected = [];
-    for (const opt of selectedList.options) {
-      lselected.push(opt.value);
+    for (const opt of selectedList) {
+      lselected.push(opt);
     }
     var val = lselected.join(' ');
     props.updateTwdata(props.twdataKey,val);
+  }
+
+  const onSelect = (selectedValue: any) => {
+    let lselected_opts:string[] = [];
+    if (selectedValue.value !== "") {
+      lselected_opts = getSelectedOpts(props);
+      lselected_opts.push(selectedValue.value);
+    }
+    onChange(lselected_opts);
+  }
+
+  const onDeselect = (deselectedValue: any) => {
+    let lselected_opts = getSelectedOpts(props);
+    const result = lselected_opts.filter(n => n !== deselectedValue.value);
+    onChange(result);
   }
 
   return (
@@ -55,7 +70,8 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
         selectedValues={selected_opts}
         modalCloseButton={<ModalCloseButton />}
         options={opts}
-        onBlur={newValue => onChange(newValue)}
+        onSelect={onSelect}
+        onDeselect={onDeselect}
       />
     </Form.Group>
   );
