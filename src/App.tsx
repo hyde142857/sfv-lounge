@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Navbar} from 'react-bootstrap';
 import TweetFormPage from './pages/TweetFormPage';
-import { CheckLiveTweetButton,RequestButton } from './components';
+import { CheckLiveTweetButton, RequestButton } from './components';
 
 function App() {
 
