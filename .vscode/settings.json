@@ -1,3 +1,9 @@
 {
-    "jest.showCoverageOnLoad": true
+    "jest.showCoverageOnLoad": true,
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": [
+            "${workspaceFolder}/.github/workflows/unittest.yml",
+            "${workspaceFolder}/.github/workflows/deploy.yml",
+        ],
+    },
 }
