@@ -3,6 +3,10 @@ import { GetTweetText, GetUrl } from '../api/Utils';
 import { GITHUB_PAGES_URL, Props } from '../types/Defs';
 
 function ToolAppTwitterCard(props: Props) {
+  const title_obj = document.querySelector('meta[property="og:title"]');
+  const title = title_obj ? title_obj.getAttribute('content') : "";
+  const desc_obj = document.querySelector('meta[property="og:description"]');
+  const desc = desc_obj ? desc_obj.getAttribute('content') : "";
   return (<Card border="secoundary">
     <Card.Body>
       <Container>
@@ -16,10 +20,8 @@ function ToolAppTwitterCard(props: Props) {
             />
           </Col>
           <Col>
-            <Card.Title>スト5ラウンジ募集ツール</Card.Title>
-            <Card.Text>
-              ラウンジ募集のTweetを作成するツール。スマホで入力しやすく、保存ができます。
-            </Card.Text>
+            <Card.Title>{title}</Card.Title>
+            <Card.Text>{desc}</Card.Text>
           </Col>
         </Row>
       </Container>
