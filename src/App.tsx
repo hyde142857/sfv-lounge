@@ -3,6 +3,12 @@ import { Container, Navbar} from 'react-bootstrap';
 import TweetFormPage from './pages/TweetFormPage';
 import { CheckLiveTweetButton, RequestButton } from './components';
 
+const footerStyle = {
+  textAlign: 'center',
+  padding: '10px',
+  background: '#101010',
+}
+
 function App() {
 
   return (<>
@@ -23,6 +29,9 @@ function App() {
       <hr />
       <RequestButton />
     </Container>
+    <div className="footer-copyright text-center py-3">© 2021-2022 Copyright:
+      Hyde (Twitter:<a href="https://twitter.com/hyde142857">Follow @hyde142857</a>)
+    </div>
   </>);
 }
 
