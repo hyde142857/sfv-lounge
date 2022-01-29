@@ -3,12 +3,6 @@ import { Container, Navbar} from 'react-bootstrap';
 import TweetFormPage from './pages/TweetFormPage';
 import { CheckLiveTweetButton, RequestButton } from './components';
 
-const footerStyle = {
-  textAlign: 'center',
-  padding: '10px',
-  background: '#101010',
-}
-
 function App() {
 
   return (<>
