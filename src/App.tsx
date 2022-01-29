@@ -23,6 +23,9 @@ function App() {
       <hr />
       <RequestButton />
     </Container>
+    <div className="footer-copyright text-center py-3">© 2021-2022 Copyright:
+      Hyde (Twitter:<a href="https://twitter.com/hyde142857">Follow @hyde142857</a>)
+    </div>
   </>);
 }
 
