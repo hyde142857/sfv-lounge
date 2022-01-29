@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: "16.x"
           cache: 'npm'
-      - run: bash scripts/switchurl_dev.sh
+      - run: bash scripts/switchurl.sh
       - run: npm ci
       - run: npm run build
       - run: npm test -- --coverage --watchAll=false
