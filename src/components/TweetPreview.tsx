@@ -1,12 +1,17 @@
 import { Card, Col, Container, Figure, Row } from 'react-bootstrap';
-import { GetTweetText, GetUrl } from '../api/Utils';
-import { GITHUB_PAGES_URL, Props } from '../types/Defs';
+import { GetLpRank, GetTweetText, GetUrl, string2boolean } from '../api/Utils';
+import { Props } from '../types/Defs';
 
 function ToolAppTwitterCard(props: Props) {
   const title_obj = document.querySelector('meta[property="og:title"]');
   const title = title_obj ? title_obj.getAttribute('content') : "";
   const desc_obj = document.querySelector('meta[property="og:description"]');
   const desc = desc_obj ? desc_obj.getAttribute('content') : "";
+  const rank = GetLpRank(props.twdata.lp);
+  let imgurl = "ogimage_summary.png";
+  if (rank !== "") {
+    imgurl = "rank/" + rank + ".png";
+  }
   return (<Card border="secoundary">
     <Card.Body>
       <Container>
@@ -16,7 +21,7 @@ function ToolAppTwitterCard(props: Props) {
               width={144}
               height={144}
               alt="171x180"
-              src="ogimage_summary.png"
+              src={imgurl}
             />
           </Col>
           <Col>
@@ -30,7 +35,7 @@ function ToolAppTwitterCard(props: Props) {
 }
 
 function TweetPreview(props: Props) {
-  const toolUrl: boolean = GetUrl(props.twdata) === GITHUB_PAGES_URL;
+  const toolUrl: boolean = (props.twdata.url === "" && string2boolean(props.twdata.attachToolUrl, true));
   return (
     <>
       <Card border="primary">
