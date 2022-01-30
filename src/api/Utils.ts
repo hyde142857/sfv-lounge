@@ -129,6 +129,10 @@ export function GetUrl(twdata: TweetData) {
     return twdata.url;
   }
   if (string2boolean(twdata.attachToolUrl, true)) {
+    const rank = GetLpRank(twdata.lp);
+    if (rank !== "") {
+      return GITHUB_PAGES_URL + "/rank/" + rank + ".html";
+    }
     return GITHUB_PAGES_URL;
   }
   return "";
