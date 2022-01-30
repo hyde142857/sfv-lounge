@@ -18,11 +18,11 @@ test('GetLpRank()', () => {
   expect(GetLpRank("")).toEqual("");
   expect(GetLpRank("hoge")).toEqual("");
   expect(GetLpRank("11111 hoge")).toEqual("");
-  expect(GetLpRank("0")).toEqual("[Rookie]");
-  expect(GetLpRank("500")).toEqual("[Bronze]");
-  expect(GetLpRank("4000")).toEqual("[Gold]");
-  expect(GetLpRank("11111")).toEqual("[SuperPlatinum]");
-  expect(GetLpRank("400000")).toEqual("[Warload]");
+  expect(GetLpRank("0")).toEqual("Rookie");
+  expect(GetLpRank("500")).toEqual("Bronze");
+  expect(GetLpRank("4000")).toEqual("Gold");
+  expect(GetLpRank("11111")).toEqual("SuperPlatinum");
+  expect(GetLpRank("400000")).toEqual("Warload");
 });
 
 test('GetUrl()', () => {
@@ -54,7 +54,7 @@ test('GetTweetTextMessage()', () => {
     "hogehoge2\n\n" +
     "【ID】\n" +
     "【キャラ】リュウ\n" +
-    "【LP】hoge \n" +
+    "【LP】hoge\n" +
     "【ラウンド】5ラウンド 99秒\n" +
     "【連戦】1本先取\n" +
     "【キャラセレ】OFF\n" +
