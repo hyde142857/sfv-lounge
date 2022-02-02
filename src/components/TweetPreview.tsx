@@ -18,9 +18,9 @@ function ToolAppTwitterCard(props: Props) {
         <Row>
           <Col xs="auto">
             <Figure.Image
-              width={144}
-              height={144}
-              alt="171x180"
+              width={100}
+              height={100}
+              alt="cardimage"
               src={imgurl}
             />
           </Col>
