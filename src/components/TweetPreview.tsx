@@ -16,7 +16,7 @@ function ToolAppTwitterCard(props: Props) {
     <Card.Body>
       <Container>
         <Row>
-          <Col xs={2}>
+          <Col xs="auto">
             <Figure.Image
               width={144}
               height={144}
