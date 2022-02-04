@@ -1,6 +1,6 @@
 import TweetFormPage from './pages/TweetFormPage';
 import { CheckLiveTweetButton, RequestButton } from './components';
-import { AppBar, Container, createTheme, CssBaseline, Grid, IconButton, PaletteMode, ThemeProvider, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Container, createTheme, CssBaseline, Grid, IconButton, PaletteMode, ThemeProvider, Toolbar, Typography } from '@mui/material';
 import { createContext, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
@@ -45,18 +45,20 @@ function ToggleColorMode() {
 function MainApp(props:MainAppProps) {
   return (<>
     <CssBaseline />
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          スト5ラウンジ募集ツール
-        </Typography>
-        <div>
-        <IconButton sx={{ ml: 1 }} onClick={props.toggleColorMode} color="inherit">
-          {props.palettemode === 'dark' ? <FontAwesomeIcon icon={faMoon} /> : <FontAwesomeIcon icon={faSun} />}
-        </IconButton>
-        </div>
-      </Toolbar>
-    </AppBar>
+    <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            スト5ラウンジ募集ツール
+          </Typography>
+          <div>
+            <IconButton sx={{ ml: 1 }} onClick={props.toggleColorMode} color="inherit">
+              {props.palettemode === 'dark' ? <FontAwesomeIcon icon={faMoon} /> : <FontAwesomeIcon icon={faSun} />}
+            </IconButton>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </Box>
     <br />
     <Container>
       <TweetFormPage />
