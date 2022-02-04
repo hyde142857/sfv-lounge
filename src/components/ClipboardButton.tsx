@@ -2,9 +2,12 @@ import { useState } from 'react';
 import { Props } from '../types/Defs';
 import { copyClipboard } from '../api/Utils';
 import { createButton,createSvgIcon } from 'react-social-login-buttons';
-import { Modal, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopy } from '@fortawesome/free-regular-svg-icons';
+import {
+  Box, Button,
+  Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle
+} from '@mui/material';
 
 function Icon() {
   return (
@@ -31,17 +34,28 @@ function ClipboardButton(props: Props) {
     <>
       <ButtonComp onClick={() => copyClipboard(props.twdata, handleShow)} />
       <span>LINEやDiscordから募集する際、活用ください。</span>
-      <Modal show={show} onHide={handleClose} aria-labelledby="contained-modal-title-vcenter" centered>
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">クリップボードにコピー</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>クリップボードにコピーしました。ペーストしてご利用ください。</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      <Dialog
+        open={show}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box>
+          <DialogTitle id="alert-dialog-title">
+            クリップボードにコピー
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              クリップボードにコピーしました。ペーストしてご利用ください。
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} autoFocus>
+              閉じる
+            </Button>
+          </DialogActions>
+        </Box>
+      </Dialog>
     </>
   );
 }
