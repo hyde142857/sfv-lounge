@@ -1,5 +1,5 @@
 import { TweetData } from "../types/Defs";
-import { FormControl, InputLabel, MenuItem, Select, ListSubheader, FormHelperText } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, ListSubheader, FormHelperText, Checkbox, ListItemText } from "@mui/material";
 
 import 'react-responsive-select/dist/react-responsive-select.css';
 
@@ -27,11 +27,14 @@ function getSelectedOpts(props: TwdataformSelectMultiProps) {
   return selected_opts;
 }
 
-function getItem(opt: string) {
+function getItem(opt: string,selected_opts: string[]) {
   if (opt.startsWith("optHeader:")) {
     return (<ListSubheader>{opt.substring("optHeader:".length)}</ListSubheader>);
   }
-  return (<MenuItem value={opt}>{opt === "" ? "選択なし" : opt}</MenuItem>);
+  return (<MenuItem key={opt} value={opt}>
+    <Checkbox checked={selected_opts.indexOf(opt) > -1} />
+    <ListItemText primary={opt === "" ? "選択なし" : opt} />
+  </MenuItem>);
 }
 
 function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
@@ -46,6 +49,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
         id={props.twdataKey}
         value={selected_opts}
         label={props.label}
+        renderValue={(selected) => selected.join(', ')}
         onChange={
           e => {
             const value = e.target.value;
@@ -55,7 +59,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
         }
       >
         {
-          props.options.map((opt) => getItem(opt))
+          props.options.map((opt) => getItem(opt,selected_opts))
         }
       </Select>
       <FormHelperText>
