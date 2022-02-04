@@ -138,13 +138,9 @@ function TweetFormPage() {
       <TweetPreview twdata={twdata} />
       <Grid item xs={12}>
         <SaveButton twdata={twdata} />
-      </Grid>
-      <hr />
-      <Grid item xs={12}>
+        <hr />
         <TweetButton twdata={twdata} />
-      </Grid>
-      <hr />
-      <Grid item xs={12}>
+        <hr />
         <ClipboardButton twdata={twdata} />
       </Grid>
     </Grid>
