@@ -27,6 +27,13 @@ function getSelectedOpts(props: TwdataformSelectMultiProps) {
   return selected_opts;
 }
 
+function getItem(opt: string) {
+  if (opt.startsWith("optHeader:")) {
+    return (<ListSubheader>{opt.substring("optHeader:".length)}</ListSubheader>);
+  }
+  return (<MenuItem value={opt}>{opt === "" ? "選択なし" : opt}</MenuItem>);
+}
+
 function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
   let selected_opts = getSelectedOpts(props);
   const comment = props.comment || "";
@@ -48,9 +55,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
         }
       >
         {
-          props.options.map((opt) =>
-            opt.startsWith("optHeader:") ? (<ListSubheader>{opt.substring("optHeader:".length)}</ListSubheader>) :
-              <MenuItem value={opt}>{opt === "" ? "選択なし" : opt}</MenuItem>)
+          props.options.map((opt) => getItem(opt))
         }
       </Select>
       <FormHelperText>
