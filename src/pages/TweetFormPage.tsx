@@ -140,21 +140,15 @@ function TweetFormPage() {
       </Grid>
       <TweetPreview twdata={twdata} />
       <Grid item xs={12}>
-        <Form.Group className="mb-3">
-          <SaveButton twdata={twdata} />
-        </Form.Group>
+        <SaveButton twdata={twdata} />
       </Grid>
       <hr />
       <Grid item xs={12}>
-        <Form.Group className="mb-3">
-          <TweetButton twdata={twdata} />
-        </Form.Group>
+        <TweetButton twdata={twdata} />
       </Grid>
       <hr />
       <Grid item xs={12}>
-        <Form.Group className="mb-3">
-          <ClipboardButton twdata={twdata} />
-        </Form.Group>
+        <ClipboardButton twdata={twdata} />
       </Grid>
     </Grid>
   );
