@@ -1,4 +1,4 @@
-import { Form } from 'react-bootstrap';
+import { FormControl, TextField } from '@mui/material';
 import { TweetData } from '../types/Defs';
 
 export type TwdataformTextareaProps = {
@@ -11,18 +11,19 @@ export type TwdataformTextareaProps = {
 }
 
 function TwdataformTextarea(props: TwdataformTextareaProps) {
-  return (
-    <Form.Group className="mb-3" controlId={props.label}>
-      <Form.Label>{props.label}</Form.Label>
-      <Form.Control
-        as="textarea" rows={3}
+  return (<>
+    <FormControl fullWidth sx={{ m: 1 }}>
+      <TextField variant="outlined"
+        multiline rows={3}
+        id={props.twdataKey}
+        label={props.label}
+        value={props.twdata[props.twdataKey]}
         onChange={
           e => { props.updateTwdata(props.twdataKey, e.target.value); }
         }
-        value={props.twdata[props.twdataKey]}
-        isInvalid={props.isInvalid} />
-      <div className="invalid-feedback">{props.invalidFeedback}</div>
-    </Form.Group>
+      />
+    </FormControl>
+  </>
   );
 }
 
