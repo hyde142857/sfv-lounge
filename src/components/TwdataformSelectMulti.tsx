@@ -1,7 +1,6 @@
 import { TweetData } from "../types/Defs";
 import { FormControl, InputLabel, MenuItem, Select, ListSubheader, FormHelperText, Checkbox, ListItemText, Chip } from "@mui/material";
 
-import 'react-responsive-select/dist/react-responsive-select.css';
 import { Box } from "@mui/system";
 
 export type TwdataformSelectMultiProps = {

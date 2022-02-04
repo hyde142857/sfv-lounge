@@ -1,7 +1,6 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
 import TweetFormPage from './pages/TweetFormPage';
 import { CheckLiveTweetButton, RequestButton } from './components';
-import { AppBar, Container, createTheme, CssBaseline, IconButton, PaletteMode, ThemeProvider, Toolbar, Typography } from '@mui/material';
+import { AppBar, Container, createTheme, CssBaseline, Grid, IconButton, PaletteMode, ThemeProvider, Toolbar, Typography } from '@mui/material';
 import { createContext, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
@@ -61,18 +60,24 @@ function MainApp(props:MainAppProps) {
     <br />
     <Container>
       <TweetFormPage />
+      <hr />
     </Container>
     <Container>
-      <hr />
       <CheckLiveTweetButton />
+      <hr />
     </Container>
     <Container>
-      <hr />
       <RequestButton />
     </Container>
-    <div className="footer-copyright text-center py-3">© 2021-2022 Copyright:
-      Hyde (Twitter:<a href="https://twitter.com/hyde142857">Follow @hyde142857</a>)
-    </div>
+    <Container>
+      <Grid container spacing={2}>
+      <Grid item xs={12}>
+        <div className="footer-copyright text-center py-3">© 2021-2022 Copyright:
+          Hyde (Twitter:<a href="https://twitter.com/hyde142857">Follow @hyde142857</a>)
+        </div>
+      </Grid>
+      </Grid>
+    </Container>
   </>);
 }
 

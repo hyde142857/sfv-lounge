@@ -1,21 +1,22 @@
+import { Grid } from '@mui/material';
 import { GithubLoginButton, TwitterLoginButton } from 'react-social-login-buttons';
 import { launchNewIssue, launchGithub } from '../api/Utils';
-import { Row, Col } from 'react-bootstrap';
 
 function RequestButton() {
-  return (
-    <Row>
-      <Col>
+  return (<>
+    <Grid container spacing={2}>
+      <Grid item xs={6}>
         <TwitterLoginButton onClick={() => launchNewIssue()} >
           <span>要望・問題</span>
         </TwitterLoginButton>
-      </Col>
-      <Col>
+      </Grid>
+      <Grid item xs={6}>
         <GithubLoginButton onClick={() => launchGithub()} >
           <span>GitHub</span>
         </GithubLoginButton>
-      </Col>
-    </Row>
+      </Grid>
+    </Grid>
+  </>
   );
 }
 
