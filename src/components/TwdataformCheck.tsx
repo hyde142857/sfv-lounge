@@ -1,6 +1,6 @@
-import { Form } from 'react-bootstrap';
 import { string2boolean } from '../api/Utils';
 import { TweetData } from '../types/Defs';
+import { FormControlLabel, Checkbox } from '@mui/material';
 
 export type TwdataformCheckProps = {
   label: string;
@@ -12,19 +12,19 @@ export type TwdataformCheckProps = {
 
 function TwdataformCheck(props: TwdataformCheckProps) {
   const comment = props.comment || "";
-  return (
-    <Form.Group className="mb-3">
-      <Form.Check
-        type="checkbox"
-        id={props.twdataKey}
-        label={props.label + comment}
-        checked={string2boolean(props.twdata.attachToolUrl, true)}
-        onChange={
-          e => { props.updateTwdata(props.twdataKey, String(e.target.checked)); }
-        }
-      />
-    </Form.Group>
-  )
+  return (<>
+    <FormControlLabel
+      control={
+        <Checkbox
+          id={props.twdataKey}
+          defaultChecked={string2boolean(props.twdata.attachToolUrl, true)}
+          onChange={
+            e => { props.updateTwdata(props.twdataKey, String(e.target.checked)); }
+          }
+        />}
+      label={props.label + comment}
+    />
+  </>);
 }
 
 export default TwdataformCheck;
