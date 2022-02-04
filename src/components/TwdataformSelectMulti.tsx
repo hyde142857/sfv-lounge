@@ -62,7 +62,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
             if (value.indexOf("") > -1) {
               props.updateTwdata(props.twdataKey, "");
             } else {
-              props.updateTwdata(props.twdataKey, value.join(""));
+              props.updateTwdata(props.twdataKey, value.join(" "));
             }
           }
         }
