@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Form } from 'react-bootstrap';
 import { TweetData } from '../types/Defs';
 import { FightingIdIsInvalid, loadLocalStorage } from '../api/Utils';
 import {
@@ -7,7 +6,7 @@ import {
   TwdataformText, TwdataformTextarea, TwdataformCheck,
   TwdataformSelect, TwdataformSelectMulti
 } from '../components/';
-import { Grid } from '@mui/material';
+import { Grid, InputLabel } from '@mui/material';
 
 function TweetFormPage() {
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
@@ -134,9 +133,7 @@ function TweetFormPage() {
         />
       </Grid>
       <Grid item xs={12}>
-        <Form.Group className="mb-3">
-          <Form.Label>プレビュー</Form.Label>
-        </Form.Group>
+        <InputLabel>プレビュー</InputLabel>
       </Grid>
       <TweetPreview twdata={twdata} />
       <Grid item xs={12}>
