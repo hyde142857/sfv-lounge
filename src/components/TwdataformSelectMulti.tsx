@@ -12,6 +12,17 @@ export type TwdataformSelectMultiProps = {
   updateTwdata: (key: keyof TweetData, val: string) => void;
 }
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 8 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 function getSelectedOpts(props: TwdataformSelectMultiProps) {
   const value = props.twdata[props.twdataKey];
   const selected = value.replace("　", " ").split(' ');
@@ -66,6 +77,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
             }
           }
         }
+        MenuProps={MenuProps}
       >
         <MenuItem key="" value="">選択なし</MenuItem>
         {
