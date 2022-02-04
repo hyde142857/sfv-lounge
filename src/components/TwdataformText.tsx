@@ -16,7 +16,7 @@ function TwdataformText(props: TwdataformTextProps) {
   const isInvalid = props.isInvalid || false;
   const invalidFeedback = props.invalidFeedback || "";
   return (<>
-    <FormControl fullWidth sx={{ m: 1 }}>
+    <FormControl fullWidth>
       <TextField variant="outlined"
         id={props.twdataKey}
         label={props.label}

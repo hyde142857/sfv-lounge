@@ -12,7 +12,7 @@ export type TwdataformTextareaProps = {
 
 function TwdataformTextarea(props: TwdataformTextareaProps) {
   return (<>
-    <FormControl fullWidth sx={{ m: 1 }}>
+    <FormControl fullWidth>
       <TextField variant="outlined"
         multiline rows={3}
         id={props.twdataKey}
