@@ -136,9 +136,9 @@ function TweetFormPage() {
       <Grid item xs={12}>
         <Form.Group className="mb-3">
           <Form.Label>プレビュー</Form.Label>
-          <TweetPreview twdata={twdata} />
         </Form.Group>
       </Grid>
+      <TweetPreview twdata={twdata} />
       <Grid item xs={12}>
         <Form.Group className="mb-3">
           <SaveButton twdata={twdata} />
