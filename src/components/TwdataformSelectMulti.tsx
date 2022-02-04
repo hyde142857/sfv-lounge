@@ -1,7 +1,8 @@
 import { TweetData } from "../types/Defs";
-import { FormControl, InputLabel, MenuItem, Select, ListSubheader, FormHelperText, Checkbox, ListItemText } from "@mui/material";
+import { FormControl, InputLabel, MenuItem, Select, ListSubheader, FormHelperText, Checkbox, ListItemText, Chip } from "@mui/material";
 
 import 'react-responsive-select/dist/react-responsive-select.css';
+import { Box } from "@mui/system";
 
 export type TwdataformSelectMultiProps = {
   label: string;
@@ -49,7 +50,13 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
         id={props.twdataKey}
         value={selected_opts}
         label={props.label}
-        renderValue={(selected) => selected.join(', ')}
+        renderValue={(selected) => (
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+            {selected.map((value) => (
+              <Chip key={value} label={value} />
+            ))}
+          </Box>
+        )}
         onChange={
           e => {
             const value = e.target.value;
