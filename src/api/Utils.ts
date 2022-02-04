@@ -253,3 +253,12 @@ export function loadLocalStorage() {
   twdata.comment = localstorageGetItem('sfvlounge_roommatch.comment', "");
   return twdata;
 }
+
+export function loadColorMode(): ('light' | 'dark') {
+  const mode = localstorageGetItem('sfvlounge_roommatch.colormode', 'light');
+  return mode === 'dark' ? 'dark' : 'light';
+}
+
+export function saveColorMode(mode: ('light' | 'dark')) {
+  localStorage.setItem('sfvlounge_roommatch.colormode', mode);
+}

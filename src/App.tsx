@@ -4,6 +4,7 @@ import { AppBar, Box, Container, createTheme, CssBaseline, Grid, IconButton, Lin
 import { createContext, useMemo, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
+import { loadColorMode, saveColorMode } from './api/Utils';
 
 const ColorModeContext = createContext({ toggleColorMode: () => { /* do nothing */ } });
 
@@ -13,7 +14,7 @@ interface MainAppProps {
 }
 
 function ToggleColorMode() {
-  const [mode, setMode] = useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<'light' | 'dark'>(loadColorMode());
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
@@ -32,7 +33,7 @@ function ToggleColorMode() {
       }),
     [mode],
   );
-
+  saveColorMode(mode);
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
