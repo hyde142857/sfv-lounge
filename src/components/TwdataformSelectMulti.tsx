@@ -34,7 +34,7 @@ function getItem(opt: string,selected_opts: string[]) {
   }
   return (<MenuItem key={opt} value={opt}>
     <Checkbox checked={selected_opts.indexOf(opt) > -1} />
-    <ListItemText primary={opt === "" ? "選択なし" : opt} />
+    <ListItemText primary={opt} />
   </MenuItem>);
 }
 
@@ -59,12 +59,16 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
         )}
         onChange={
           e => {
-            const value = e.target.value;
-            const lvalue:string = typeof value == 'string' ? value : value.join(" ");
-            props.updateTwdata(props.twdataKey, lvalue );
+            const value = typeof e.target.value == 'string' ? [e.target.value] : e.target.value;
+            if (value.indexOf("") > -1) {
+              props.updateTwdata(props.twdataKey, "");
+            } else {
+              props.updateTwdata(props.twdataKey, value.join(""));
+            }
           }
         }
       >
+        <MenuItem key="" value="">選択なし</MenuItem>
         {
           props.options.map((opt) => getItem(opt,selected_opts))
         }
