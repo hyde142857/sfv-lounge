@@ -1,6 +1,5 @@
-import { Form } from "react-bootstrap";
-import { Select, ModalCloseButton, MultiSelectOptionMarkup } from 'react-responsive-select';
 import { TweetData } from "../types/Defs";
+import { FormControl, InputLabel, MenuItem, Select, ListSubheader, FormHelperText } from "@mui/material";
 
 import 'react-responsive-select/dist/react-responsive-select.css';
 
@@ -11,20 +10,6 @@ export type TwdataformSelectMultiProps = {
   twdata: TweetData;
   comment?: string;
   updateTwdata: (key: keyof TweetData, val: string) => void;
-}
-
-function getOpts(props: TwdataformSelectMultiProps){
-  let opts = [];
-  opts.push({ value: '', text: '選択なし' });
-  for (const opt of props.options) {
-    if (opt.startsWith("optHeader:")) {
-      const header = opt.substring("optHeader:".length);
-      opts.push({ value: undefined, text: header, optHeader: true });
-    } else {
-      opts.push({ value: opt, text: opt, markup: <MultiSelectOptionMarkup text={opt} props={null} /> });
-    }
-  }
-  return opts;
 }
 
 function getSelectedOpts(props: TwdataformSelectMultiProps) {
@@ -43,48 +28,36 @@ function getSelectedOpts(props: TwdataformSelectMultiProps) {
 }
 
 function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
-  let opts = getOpts(props);
   let selected_opts = getSelectedOpts(props);
   const comment = props.comment || "";
 
-  const onChange = (selectedList: any) => {
-    const lselected = [];
-    for (const opt of selectedList) {
-      lselected.push(opt);
-    }
-    var val = lselected.join(' ');
-    props.updateTwdata(props.twdataKey,val);
-  }
-
-  const onSelect = (selectedValue: any) => {
-    let lselected_opts:string[] = [];
-    if (selectedValue.value !== "") {
-      lselected_opts = getSelectedOpts(props);
-      lselected_opts.push(selectedValue.value);
-    }
-    onChange(lselected_opts);
-  }
-
-  const onDeselect = (deselectedValue: any) => {
-    let lselected_opts = getSelectedOpts(props);
-    const result = lselected_opts.filter(n => n !== deselectedValue.value);
-    onChange(result);
-  }
-
-  return (
-    <Form.Group className="mb-3" controlId={props.label}>
-      <Form.Label>{props.label}</Form.Label> <span>{comment}</span>
-      <Select
-        multiselect={true}
-        name={props.twdataKey}
-        selectedValues={selected_opts}
-        modalCloseButton={<ModalCloseButton />}
-        options={opts}
-        onSelect={onSelect}
-        onDeselect={onDeselect}
-      />
-    </Form.Group>
-  );
+  return (<>
+    <FormControl fullWidth>
+      <InputLabel>{props.label}</InputLabel>
+      <Select multiple
+        labelId={props.twdataKey}
+        id={props.twdataKey}
+        value={selected_opts}
+        label={props.label}
+        onChange={
+          e => {
+            const value = e.target.value;
+            const lvalue:string = typeof value == 'string' ? value : value.join(" ");
+            props.updateTwdata(props.twdataKey, lvalue );
+          }
+        }
+      >
+        {
+          props.options.map((opt) =>
+            opt.startsWith("optHeader:") ? (<ListSubheader>{opt.substring("optHeader:".length)}</ListSubheader>) :
+              <MenuItem value={opt}>{opt === "" ? "選択なし" : opt}</MenuItem>)
+        }
+      </Select>
+      <FormHelperText>
+        {comment}
+      </FormHelperText>
+    </FormControl>
+  </>);
 }
 
 export default TwdataformSelectMulti;
