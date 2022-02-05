@@ -21,7 +21,7 @@ function SaveButton(props: Props) {
   return (
     <>
       <Button
-        variant="outlined" fullWidth size='large'
+        variant="contained" color="warning" fullWidth size='large'
         startIcon={<StorageIcon />}
         onClick={() => saveImpl(props.twdata, handleShow)}
       >

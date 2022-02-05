@@ -16,7 +16,7 @@ function ClipboardButton(props: Props) {
   return (
     <>
       <Button
-        variant="outlined" fullWidth size='large'
+        variant="contained" color="secondary" fullWidth size='large'
         startIcon={<ContentCopyIcon />}
         onClick={() => copyClipboard(props.twdata, handleShow)}
       >

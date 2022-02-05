@@ -8,7 +8,7 @@ function RequestButton() {
     <Grid container spacing={2}>
       <Grid item xs={6}>
         <Button
-          variant="outlined" fullWidth size='large'
+          variant="contained" fullWidth size='large'
           startIcon={<TwitterIcon />}
           onClick={() => launchNewIssue()}
         >
@@ -17,7 +17,7 @@ function RequestButton() {
       </Grid>
       <Grid item xs={6}>
         <Button
-          variant="outlined" fullWidth size='large'
+          variant="contained" color="info" fullWidth size='large'
           startIcon={<GitHubIcon />}
           onClick={() => launchGithub()}
         >
