@@ -39,13 +39,11 @@ function TweetPreview(props: Props) {
   return (
     <>
       <Container>
-        <Grid item xs={10}>
-          <Typography variant="body2" color="text.primary">
-            <pre>
-              {GetTweetText(props.twdata)}
-              {!toolUrl && GetUrl(props.twdata)}
-            </pre>
-          </Typography>
+        <Grid item xs={12}>
+          <div>
+            {GetTweetText(props.twdata).split('\n').map((itm, i) => (<>{itm} <br key={"preview-br-" + String(i)} /></>))}
+            {!toolUrl && GetUrl(props.twdata)}
+          </div>
         </Grid>
       </Container>
       {toolUrl && (<ToolAppTwitterCard twdata={props.twdata} />)}
