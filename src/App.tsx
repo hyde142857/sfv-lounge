@@ -79,7 +79,7 @@ function MainApp(props:MainAppProps) {
             {'Copyright © '}
             <Link color="inherit" href="https://twitter.com/hyde142857">
               Hyde
-            </Link>{' '}
+            </Link>{' 2021-'}
             {new Date().getFullYear()}
             {'.'}
           </Typography>
