@@ -63,14 +63,16 @@ function MainApp(props:MainAppProps) {
     <br />
     <Container>
       <TweetFormPage />
-      <hr />
     </Container>
     <Container>
-      <CheckLiveTweetButton />
-      <hr />
-    </Container>
-    <Container>
-      <RequestButton />
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <CheckLiveTweetButton />
+        </Grid>
+        <Grid item xs={12}>
+          <RequestButton />
+        </Grid>
+      </Grid>
     </Container>
     <Container>
       <Grid container spacing={2}>

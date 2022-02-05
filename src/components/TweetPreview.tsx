@@ -13,7 +13,7 @@ function ToolAppTwitterCard(props: Props) {
     imgurl = "rank/" + rank + ".png";
   }
   return (<>
-    <Grid item xs={4}>
+    <Grid item xs={3}>
       <Card variant="outlined" sx={{ maxWidth: 140 }}>
         <CardMedia
           component="img"
@@ -22,7 +22,7 @@ function ToolAppTwitterCard(props: Props) {
         />
       </Card>
     </Grid>
-    <Grid item xs={8}>
+    <Grid item xs={9}>
       <Typography gutterBottom variant="h5" component="div">
         {title}
       </Typography>

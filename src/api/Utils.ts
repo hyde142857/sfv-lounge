@@ -120,7 +120,7 @@ export function GetTweetText(twdata: TweetData) {
   twtext += "【通信制限】" + twdata.speedlimit + "\n";
   twtext += GetTweetTextPasscode(twdata.passcode);
   twtext += GetTweetTextComment(twdata.comment);
-  twtext += "#ストVラウンジ募集\n";
+  twtext += "#ストVラウンジ募集";
   return (twtext);
 }
 
@@ -139,7 +139,7 @@ export function GetUrl(twdata: TweetData) {
 }
 
 export function submitTweet(twdata: TweetData) {
-  const twdata_uri = encodeURIComponent(GetTweetText(twdata));
+  const twdata_uri = encodeURIComponent(GetTweetText(twdata) + "\n");
   const url = GetUrl(twdata);
   let openurl = "https://twitter.com/intent/tweet?text=" + twdata_uri;
   if (url !== "") {
