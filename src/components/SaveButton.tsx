@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Props, TweetData } from '../types/Defs';
 import { saveLocalStorage } from '../api/Utils';
-import { createButton,createSvgIcon } from 'react-social-login-buttons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -14,22 +13,6 @@ function saveImpl(twdata: TweetData, handleShow:() => void) {
   handleShow();
 }
 
-function Icon() {
-  return (
-    <FontAwesomeIcon icon={faDatabase} width={24} height={24} />
-  );
-}
-
-const ButtonComp = createButton(
-  {
-    text: "ブラウザにデータを保存",
-    icon: createSvgIcon(Icon),
-    style: { background: "#f9ae32" },
-    activeStyle: { background: "#ff9f23" }
-  }
-);
-
-
 function SaveButton(props: Props) {
   const [show, setShow] = useState(false);
 
@@ -38,7 +21,13 @@ function SaveButton(props: Props) {
 
   return (
     <>
-      <ButtonComp onClick={() => saveImpl(props.twdata, handleShow)} />
+      <Button
+        variant="outlined" fullWidth size='large'
+        startIcon={<FontAwesomeIcon icon={faDatabase} width={24} height={24} />}
+        onClick={() => saveImpl(props.twdata, handleShow)}
+      >
+        ブラウザにデータ保存
+      </Button>
       <Dialog
         open={show}
         onClose={handleClose}

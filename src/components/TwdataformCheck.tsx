@@ -1,6 +1,6 @@
 import { string2boolean } from '../api/Utils';
 import { TweetData } from '../types/Defs';
-import { FormControlLabel, Checkbox } from '@mui/material';
+import { FormControlLabel, Checkbox, FormHelperText } from '@mui/material';
 
 export type TwdataformCheckProps = {
   label: string;
@@ -22,8 +22,9 @@ function TwdataformCheck(props: TwdataformCheckProps) {
             e => { props.updateTwdata(props.twdataKey, String(e.target.checked)); }
           }
         />}
-      label={props.label + comment}
+      label={props.label}
     />
+    <FormHelperText>{comment}</FormHelperText>
   </>);
 }
 
