@@ -2,9 +2,9 @@ import TweetFormPage from './pages/TweetFormPage';
 import { CheckLiveTweetButton, RequestButton } from './components';
 import { AppBar, Box, Container, createTheme, CssBaseline, Grid, IconButton, Link, PaletteMode, ThemeProvider, Toolbar, Typography } from '@mui/material';
 import { createContext, useMemo, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faSun } from '@fortawesome/free-regular-svg-icons';
 import { loadColorMode, saveColorMode } from './api/Utils';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
 
 const ColorModeContext = createContext({ toggleColorMode: () => { /* do nothing */ } });
 
@@ -54,7 +54,7 @@ function MainApp(props:MainAppProps) {
           </Typography>
           <div>
             <IconButton sx={{ ml: 1 }} onClick={props.toggleColorMode} color="inherit">
-              {props.palettemode === 'dark' ? <FontAwesomeIcon icon={faMoon} /> : <FontAwesomeIcon icon={faSun} />}
+              {props.palettemode === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />}
             </IconButton>
           </div>
         </Toolbar>
