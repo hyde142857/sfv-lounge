@@ -9,7 +9,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 const ColorModeContext = createContext({ toggleColorMode: () => { /* do nothing */ } });
 
 interface MainAppProps {
-  toggleColorMode: () => void,
+  onClickColorMode: () => void,
   palettemode: PaletteMode,
 }
 
@@ -37,7 +37,7 @@ function ToggleColorMode() {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        <MainApp palettemode={mode} toggleColorMode={colorMode.toggleColorMode}/>
+        <MainApp palettemode={mode} onClickColorMode={colorMode.toggleColorMode}/>
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
@@ -53,7 +53,7 @@ function MainApp(props:MainAppProps) {
             スト5ラウンジ募集ツール
           </Typography>
           <div>
-            <IconButton sx={{ ml: 1 }} onClick={props.toggleColorMode} color="inherit">
+            <IconButton sx={{ ml: 1 }} onClick={props.onClickColorMode} color="inherit">
               {props.palettemode === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />}
             </IconButton>
           </div>

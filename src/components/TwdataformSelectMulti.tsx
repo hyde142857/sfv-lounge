@@ -40,11 +40,11 @@ function getSelectedOpts(props: TwdataformSelectMultiProps) {
 
 function getItem(opt: string,selected_opts: string[]) {
   if (opt.startsWith("optHeader:")) {
-    return (<ListSubheader>{opt.substring("optHeader:".length)}</ListSubheader>);
+    return (<ListSubheader key={opt}>{opt.substring("optHeader:".length)}</ListSubheader>);
   }
-  return (<MenuItem key={opt} value={opt}>
-    <Checkbox checked={selected_opts.indexOf(opt) > -1} />
-    <ListItemText primary={opt} />
+  return (<MenuItem key={opt + "-menuitem"} value={opt}>
+    <Checkbox key={opt + "-checkbox"} checked={selected_opts.indexOf(opt) > -1} />
+    <ListItemText key={opt + "-listitem"} primary={opt} />
   </MenuItem>);
 }
 
