@@ -1,4 +1,4 @@
-import { Form } from 'react-bootstrap';
+import { FormControl, TextField } from '@mui/material';
 import { TweetData } from '../types/Defs';
 
 export type TwdataformTextProps = {
@@ -13,18 +13,22 @@ export type TwdataformTextProps = {
 
 function TwdataformText(props: TwdataformTextProps) {
   const comment = props.comment || "";
-  return (
-    <Form.Group className="mb-3" controlId={props.label}>
-      <Form.Label>{props.label}</Form.Label> <span>{comment}</span>
-      <Form.Control
-        type="text"
+  const isInvalid = props.isInvalid || false;
+  const invalidFeedback = props.invalidFeedback || "";
+  return (<>
+    <FormControl fullWidth>
+      <TextField variant="outlined"
+        id={props.twdataKey}
+        label={props.label}
+        value={props.twdata[props.twdataKey]}
         onChange={
           e => { props.updateTwdata(props.twdataKey, e.target.value); }
         }
-        value={props.twdata[props.twdataKey]}
-        isInvalid={props.isInvalid} />
-      <div className="invalid-feedback">{props.invalidFeedback}</div>
-    </Form.Group>
+        error={isInvalid}
+        helperText={(isInvalid ? invalidFeedback : "") + comment}
+      />
+    </FormControl>
+  </>
   );
 }
 

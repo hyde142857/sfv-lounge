@@ -1,12 +1,17 @@
-import { TwitterLoginButton } from 'react-social-login-buttons';
+import { Button } from '@mui/material';
+import TwitterIcon from '@mui/icons-material/Twitter';
 import { Props } from '../types/Defs';
-import { submitTweet} from '../api/Utils';
+import { submitTweet } from '../api/Utils';
 
 function TweetButton(props: Props) {
   return (
-    <TwitterLoginButton onClick={() => submitTweet(props.twdata)} >
-      <span>募集をツイートする</span>
-    </TwitterLoginButton>
+    <Button
+      variant="contained" fullWidth size='large'
+      startIcon={<TwitterIcon />}
+      onClick={() => submitTweet(props.twdata)}
+    >
+      募集をツイートする
+    </Button>
   );
 }
 

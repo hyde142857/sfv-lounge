@@ -1,5 +1,5 @@
-import { Form } from "react-bootstrap";
 import { TweetData } from "../types/Defs";
+import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 
 export type TwdataformSelectProps = {
   label: string;
@@ -10,20 +10,24 @@ export type TwdataformSelectProps = {
 }
 
 function TwdataformSelect(props: TwdataformSelectProps) {
-  return (
-    <Form.Group className="mb-3" controlId={props.label}>
-      <Form.Label>{props.label}</Form.Label>
-      <Form.Select
+  return (<>
+    <FormControl fullWidth>
+      <InputLabel>{props.label}</InputLabel>
+      <Select
+        labelId={props.twdataKey}
+        id={props.twdataKey}
         value={props.twdata[props.twdataKey]}
+        label={props.label}
         onChange={
           e => { props.updateTwdata(props.twdataKey, e.target.value); }
-        } >
-        {
-          props.options.map((opt) => <option key={opt}>{opt}</option>)
         }
-      </Form.Select>
-    </Form.Group>
-  );
+      >
+        {
+          props.options.map((opt) => <MenuItem key={opt} value={opt}>{opt === "" ? "選択なし" : opt}</MenuItem>)
+        }
+      </Select>
+    </FormControl>
+  </>);
 }
 
 export default TwdataformSelect;

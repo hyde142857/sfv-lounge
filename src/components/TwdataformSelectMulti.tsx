@@ -1,8 +1,7 @@
-import { Form } from "react-bootstrap";
-import { Select, ModalCloseButton, MultiSelectOptionMarkup } from 'react-responsive-select';
 import { TweetData } from "../types/Defs";
+import { FormControl, InputLabel, MenuItem, Select, ListSubheader, FormHelperText, Checkbox, ListItemText, Chip } from "@mui/material";
 
-import 'react-responsive-select/dist/react-responsive-select.css';
+import { Box } from "@mui/system";
 
 export type TwdataformSelectMultiProps = {
   label: string;
@@ -13,19 +12,16 @@ export type TwdataformSelectMultiProps = {
   updateTwdata: (key: keyof TweetData, val: string) => void;
 }
 
-function getOpts(props: TwdataformSelectMultiProps){
-  let opts = [];
-  opts.push({ value: '', text: '選択なし' });
-  for (const opt of props.options) {
-    if (opt.startsWith("optHeader:")) {
-      const header = opt.substring("optHeader:".length);
-      opts.push({ value: undefined, text: header, optHeader: true });
-    } else {
-      opts.push({ value: opt, text: opt, markup: <MultiSelectOptionMarkup text={opt} props={null} /> });
-    }
-  }
-  return opts;
-}
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 8 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 function getSelectedOpts(props: TwdataformSelectMultiProps) {
   const value = props.twdata[props.twdataKey];
@@ -42,49 +38,57 @@ function getSelectedOpts(props: TwdataformSelectMultiProps) {
   return selected_opts;
 }
 
+function getItem(opt: string,selected_opts: string[]) {
+  if (opt.startsWith("optHeader:")) {
+    return (<ListSubheader key={opt}>{opt.substring("optHeader:".length)}</ListSubheader>);
+  }
+  return (<MenuItem key={opt + "-menuitem"} value={opt}>
+    <Checkbox key={opt + "-checkbox"} checked={selected_opts.indexOf(opt) > -1} />
+    <ListItemText key={opt + "-listitem"} primary={opt} />
+  </MenuItem>);
+}
+
 function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
-  let opts = getOpts(props);
   let selected_opts = getSelectedOpts(props);
   const comment = props.comment || "";
 
-  const onChange = (selectedList: any) => {
-    const lselected = [];
-    for (const opt of selectedList) {
-      lselected.push(opt);
-    }
-    var val = lselected.join(' ');
-    props.updateTwdata(props.twdataKey,val);
-  }
-
-  const onSelect = (selectedValue: any) => {
-    let lselected_opts:string[] = [];
-    if (selectedValue.value !== "") {
-      lselected_opts = getSelectedOpts(props);
-      lselected_opts.push(selectedValue.value);
-    }
-    onChange(lselected_opts);
-  }
-
-  const onDeselect = (deselectedValue: any) => {
-    let lselected_opts = getSelectedOpts(props);
-    const result = lselected_opts.filter(n => n !== deselectedValue.value);
-    onChange(result);
-  }
-
-  return (
-    <Form.Group className="mb-3" controlId={props.label}>
-      <Form.Label>{props.label}</Form.Label> <span>{comment}</span>
-      <Select
-        multiselect={true}
-        name={props.twdataKey}
-        selectedValues={selected_opts}
-        modalCloseButton={<ModalCloseButton />}
-        options={opts}
-        onSelect={onSelect}
-        onDeselect={onDeselect}
-      />
-    </Form.Group>
-  );
+  return (<>
+    <FormControl fullWidth>
+      <InputLabel>{props.label}</InputLabel>
+      <Select multiple
+        labelId={props.twdataKey}
+        id={props.twdataKey}
+        value={selected_opts}
+        label={props.label}
+        renderValue={(selected) => (
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+            {selected.map((value) => (
+              <Chip key={value} label={value} />
+            ))}
+          </Box>
+        )}
+        onChange={
+          e => {
+            const value = typeof e.target.value == 'string' ? [e.target.value] : e.target.value;
+            if (value.indexOf("") > -1) {
+              props.updateTwdata(props.twdataKey, "");
+            } else {
+              props.updateTwdata(props.twdataKey, value.join(" "));
+            }
+          }
+        }
+        MenuProps={MenuProps}
+      >
+        <MenuItem key="" value="">選択なし</MenuItem>
+        {
+          props.options.map((opt) => getItem(opt,selected_opts))
+        }
+      </Select>
+      <FormHelperText>
+        {comment}
+      </FormHelperText>
+    </FormControl>
+  </>);
 }
 
 export default TwdataformSelectMulti;

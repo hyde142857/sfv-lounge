@@ -120,7 +120,7 @@ export function GetTweetText(twdata: TweetData) {
   twtext += "【通信制限】" + twdata.speedlimit + "\n";
   twtext += GetTweetTextPasscode(twdata.passcode);
   twtext += GetTweetTextComment(twdata.comment);
-  twtext += "#ストVラウンジ募集\n";
+  twtext += "#ストVラウンジ募集";
   return (twtext);
 }
 
@@ -139,7 +139,7 @@ export function GetUrl(twdata: TweetData) {
 }
 
 export function submitTweet(twdata: TweetData) {
-  const twdata_uri = encodeURIComponent(GetTweetText(twdata));
+  const twdata_uri = encodeURIComponent(GetTweetText(twdata) + "\n");
   const url = GetUrl(twdata);
   let openurl = "https://twitter.com/intent/tweet?text=" + twdata_uri;
   if (url !== "") {
@@ -163,7 +163,6 @@ export function launchGithub() {
 
 export function copyClipboard(twdata: TweetData, hundleShow: () => void) {
   const text = GetTweetText(twdata) + GetUrl(twdata);
-
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
       hundleShow();
@@ -252,4 +251,13 @@ export function loadLocalStorage() {
   twdata.attachToolUrl = localstorageGetItem('sfvlounge_roommatch.attachtoolurl', "true");
   twdata.comment = localstorageGetItem('sfvlounge_roommatch.comment', "");
   return twdata;
+}
+
+export function loadColorMode(): ('light' | 'dark') {
+  const mode = localstorageGetItem('sfvlounge_roommatch.colormode', 'light');
+  return mode === 'dark' ? 'dark' : 'light';
+}
+
+export function saveColorMode(mode: ('light' | 'dark')) {
+  localStorage.setItem('sfvlounge_roommatch.colormode', mode);
 }

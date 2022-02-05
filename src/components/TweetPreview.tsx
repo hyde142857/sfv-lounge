@@ -1,4 +1,4 @@
-import { Card, Col, Container, Figure, Row } from 'react-bootstrap';
+import { Card, CardMedia, Container, Grid, Typography } from '@mui/material';
 import { GetLpRank, GetTweetText, GetUrl, string2boolean } from '../api/Utils';
 import { Props } from '../types/Defs';
 
@@ -12,41 +12,41 @@ function ToolAppTwitterCard(props: Props) {
   if (rank !== "") {
     imgurl = "rank/" + rank + ".png";
   }
-  return (<Card border="secoundary">
-    <Card.Body>
-      <Container>
-        <Row>
-          <Col xs="auto">
-            <Figure.Image
-              width={100}
-              height={100}
-              alt="cardimage"
-              src={imgurl}
-            />
-          </Col>
-          <Col>
-            <Card.Title>{title}</Card.Title>
-            <Card.Text>{desc}</Card.Text>
-          </Col>
-        </Row>
-      </Container>
-    </Card.Body>
-  </Card>);
+  return (<>
+    <Grid item xs={3}>
+      <Card variant="outlined" sx={{ maxWidth: 140 }}>
+        <CardMedia
+          component="img"
+          alt="cardimage"
+          image={imgurl}
+        />
+      </Card>
+    </Grid>
+    <Grid item xs={9}>
+      <Typography gutterBottom variant="h5" component="div">
+        {title}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        {desc}
+      </Typography>
+    </Grid>
+  </>
+  );
 }
 
 function TweetPreview(props: Props) {
   const toolUrl: boolean = (props.twdata.url === "" && string2boolean(props.twdata.attachToolUrl, true));
   return (
     <>
-      <Card border="primary">
-        <Card.Body>
-          <pre>
-            {GetTweetText(props.twdata)}
+      <Container>
+        <Grid item xs={12}>
+          <div>
+            {GetTweetText(props.twdata).split('\n').map((itm, i) => (<>{itm} <br key={"preview-br-" + String(i)} /></>))}
             {!toolUrl && GetUrl(props.twdata)}
-          </pre>
-          {toolUrl && (<ToolAppTwitterCard twdata={props.twdata} />)}
-        </Card.Body>
-      </Card>
+          </div>
+        </Grid>
+      </Container>
+      {toolUrl && (<ToolAppTwitterCard twdata={props.twdata} />)}
     </>);
 }
 

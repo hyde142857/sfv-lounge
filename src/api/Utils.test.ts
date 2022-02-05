@@ -42,7 +42,7 @@ test('GetTweetTextMessage()', () => {
     "【ハード】どっちもOK\n" +
     "【通信制限】OFF\n" +
     "【パス】なし\n" +
-    "#ストVラウンジ募集\n"
+    "#ストVラウンジ募集"
   );
   twdata.lp = "hoge"
   twdata.charactor = "リュウ"
@@ -62,7 +62,7 @@ test('GetTweetTextMessage()', () => {
     "【通信制限】OFF\n" +
     "【パス】9999\n" +
     "【コメント】hogehoge\n" +
-    "#ストVラウンジ募集\n"
+    "#ストVラウンジ募集"
   );
 });
 
