@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Props } from '../types/Defs';
 import { copyClipboard } from '../api/Utils';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy } from '@fortawesome/free-regular-svg-icons';
 import {
   Box, Button,
   Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormHelperText
 } from '@mui/material';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 function ClipboardButton(props: Props) {
   const [show, setShow] = useState(false);
@@ -18,7 +17,7 @@ function ClipboardButton(props: Props) {
     <>
       <Button
         variant="outlined" fullWidth size='large'
-        startIcon={<FontAwesomeIcon icon={faCopy} width={24} height={24} />}
+        startIcon={<ContentCopyIcon />}
         onClick={() => copyClipboard(props.twdata, handleShow)}
       >
         クリップボードにコピー

@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Props, TweetData } from '../types/Defs';
 import { saveLocalStorage } from '../api/Utils';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDatabase } from '@fortawesome/free-solid-svg-icons';
 import {
   Box, Button,
   Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle
 } from '@mui/material';
+import StorageIcon from '@mui/icons-material/Storage';
 
 function saveImpl(twdata: TweetData, handleShow:() => void) {
   saveLocalStorage(twdata);
@@ -23,7 +22,7 @@ function SaveButton(props: Props) {
     <>
       <Button
         variant="outlined" fullWidth size='large'
-        startIcon={<FontAwesomeIcon icon={faDatabase} width={24} height={24} />}
+        startIcon={<StorageIcon />}
         onClick={() => saveImpl(props.twdata, handleShow)}
       >
         ブラウザにデータ保存
