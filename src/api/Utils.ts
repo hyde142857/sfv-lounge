@@ -162,7 +162,7 @@ export function launchGithub() {
 }
 
 export function copyClipboard(twdata: TweetData, hundleShow: () => void) {
-  const text = GetTweetText(twdata) + GetUrl(twdata);
+  const text = GetTweetText(twdata) + "\n" + GetUrl(twdata);
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
       hundleShow();
