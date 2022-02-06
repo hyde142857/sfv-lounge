@@ -8,32 +8,32 @@ export function FightingIdIsInvalid(twdata: TweetData) {
 }
 
 const LpRankList: { [key: string]: number } = {
-  "Rookie": 0,
-  "Bronze": 500,
-  "SuperBronze": 1000,
-  "UltraBronze": 1500,
-  "Silver": 2000,
-  "SuperSilver": 3000,
-  "UltraSilver": 3500,
-  "Gold": 4000,
-  "SuperGold": 5500,
-  "UltraGold": 6500,
-  "Platinum": 7500,
-  "SuperPlatinum": 10000,
-  "UltraPlatinum": 12000,
-  "Diamond": 14000,
-  "SuperDiamond": 20000,
-  "UltraDiamond": 25000,
-  "Master": 30000,
-  "GrandMaster": 35000,
-  "UltimateGrandMaster": 100000,
-  "Warload": 300000,
+  'Rookie': 0,
+  'Bronze': 500,
+  'SuperBronze': 1000,
+  'UltraBronze': 1500,
+  'Silver': 2000,
+  'SuperSilver': 3000,
+  'UltraSilver': 3500,
+  'Gold': 4000,
+  'SuperGold': 5500,
+  'UltraGold': 6500,
+  'Platinum': 7500,
+  'SuperPlatinum': 10000,
+  'UltraPlatinum': 12000,
+  'Diamond': 14000,
+  'SuperDiamond': 20000,
+  'UltraDiamond': 25000,
+  'Master': 30000,
+  'GrandMaster': 35000,
+  'UltimateGrandMaster': 100000,
+  'Warload': 300000,
 };
 
 export function GetLpRank(lp: string) {
   let rank = '';
   if (!lp.match(/^\d+$/)) {
-    return "";
+    return '';
   }
   const lpnum = Number(lp);
   for (const k in LpRankList) {
