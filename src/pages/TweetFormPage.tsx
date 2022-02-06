@@ -49,7 +49,7 @@ function TweetFormPage() {
       <Grid item xs={12}>
         <TwdataformText twdata={twdata} updateTwdata={updateTwdata}
           label='LP' twdataKey='lp'
-          comment='数字だけ入れるとランク名が補完されます。'
+          comment='数字だけ入れると ランク名が補完/ランクロゴが付与 されます。'
         />
       </Grid>
       <Grid item xs={6}>
@@ -118,8 +118,8 @@ function TweetFormPage() {
       </Grid>
       <Grid item xs={12}>
         <TwdataformCheck twdata={twdata} updateTwdata={updateTwdata}
-          label='ツイートに本ツールのURLを付与して、応援する。' twdataKey='attachToolUrl'
-          comment='(上記URLが空欄の時のみ有効です。)'
+          label='ツイートに 本ツールのURL/ランクのロゴ を付与する。' twdataKey='attachToolUrl'
+          comment='上記URLが空欄の時のみ有効です。LPが数字のみだと,ロゴがランクになります。'
         />
       </Grid>
       <Grid item xs={12}>
