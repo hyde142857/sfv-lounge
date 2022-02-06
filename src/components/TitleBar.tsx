@@ -17,7 +17,7 @@ function shareHandler() {
     title: ThisPageGetTitle(),
     text: ThisPageGetDesc(),
     url: GITHUB_PAGES_URL,
-  }
+  };
   navigator.share(shareData);
 }
 
