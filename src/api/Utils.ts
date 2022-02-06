@@ -1,7 +1,7 @@
 import { GITHUB_PAGES_URL, GITHUB_REPOS_URL, TweetData } from '../types/Defs';
 
 export function FightingIdIsInvalid(twdata: TweetData) {
-  if (twdata.fightingId === "") {
+  if (twdata.fightingId === '') {
     return true;
   }
   return false;
@@ -31,7 +31,7 @@ const LpRankList: { [key: string]: number } = {
 };
 
 export function GetLpRank(lp: string) {
-  let rank = "";
+  let rank = '';
   if (!lp.match(/^\d+$/)) {
     return "";
   }
@@ -45,124 +45,124 @@ export function GetLpRank(lp: string) {
 }
 
 function GetTweetTextMessage(message: string) {
-  if (message !== "") {
-    return message + "\n\n";
+  if (message !== '') {
+    return message + '\n\n';
   }
-  return "";
+  return '';
 }
 
 function GetTweetTextCharactor(charactor: string) {
-  if (charactor !== "") {
-    return "【キャラ】" + charactor + "\n";
+  if (charactor !== '') {
+    return '【キャラ】' + charactor + '\n';
   }
-  return "";
+  return '';
 }
 
 function GetTweetTextLp(lp: string) {
-  if (lp !== "") {
+  if (lp !== '') {
     let str: string[] = [];
-    str.push("【LP】" + lp);
-    if (GetLpRank(lp) !== "") {
-      str.push("[" + GetLpRank(lp) + "]");
+    str.push('【LP】' + lp);
+    if (GetLpRank(lp) !== '') {
+      str.push('[' + GetLpRank(lp) + ']');
     }
-    return str.join(" ") + "\n";
+    return str.join(' ') + '\n';
   }
-  return "";
+  return '';
 }
 
 function GetTweetTextGame(gameround: string, gametime: string) {
-  if (gameround !== "3ラウンド" || gametime !== "99秒") {
-    return "【ラウンド】" + gameround + " " + gametime + "\n";
+  if (gameround !== '3ラウンド' || gametime !== '99秒') {
+    return '【ラウンド】' + gameround + ' ' + gametime + '\n';
   }
-  return "";
+  return '';
 }
 
 function GetTweetTextPasscode(passcode: string) {
-  let twtext = "【パス】";
-  if (passcode === "") {
-    twtext += "なし\n";
+  let twtext = '【パス】';
+  if (passcode === '') {
+    twtext += 'なし\n';
   } else {
-    twtext += passcode + "\n";
+    twtext += passcode + '\n';
   }
   return twtext;
 }
 
 function GetTweetTextComment(comment: string) {
-  if (comment !== "") {
-    return "【コメント】" + comment + "\n";
+  if (comment !== '') {
+    return '【コメント】' + comment + '\n';
   }
-  return "";
+  return '';
 }
 
 function GetTweetTextPleyerMax(playermax: string, playerprivate: string) {
-  let text = "";
-  if (playermax !== "") {
-    text = "【部屋人数】" + playermax + "人";
-    if (playerprivate !== "") {
-      text += " 内プライベート" + playerprivate + "人";
+  let text = '';
+  if (playermax !== '') {
+    text = '【部屋人数】' + playermax + '人';
+    if (playerprivate !== '') {
+      text += ' 内プライベート' + playerprivate + '人';
     }
-    return text + "\n";
+    return text + '\n';
   }
-  return "";
+  return '';
 }
 
 export function GetTweetText(twdata: TweetData) {
-  let twtext = "";
+  let twtext = '';
   twtext += GetTweetTextMessage(twdata.message);
-  twtext += "【ID】" + twdata.fightingId + "\n";
+  twtext += '【ID】' + twdata.fightingId + '\n';
   twtext += GetTweetTextCharactor(twdata.charactor);
   twtext += GetTweetTextLp(twdata.lp);
   twtext += GetTweetTextGame(twdata.gameround, twdata.gametime);
   twtext += GetTweetTextPleyerMax(twdata.loungePlayerMax, twdata.loungePlayerPrivate);
-  twtext += "【連戦】" + twdata.game + twdata.gameset + "\n";
-  twtext += "【キャラセレ】" + twdata.charactorSelect + "\n";
-  twtext += "【ハード】" + twdata.hardware + "\n";
-  twtext += "【通信制限】" + twdata.speedlimit + "\n";
+  twtext += '【連戦】' + twdata.game + twdata.gameset + '\n';
+  twtext += '【キャラセレ】' + twdata.charactorSelect + '\n';
+  twtext += '【ハード】' + twdata.hardware + '\n';
+  twtext += '【通信制限】' + twdata.speedlimit + '\n';
   twtext += GetTweetTextPasscode(twdata.passcode);
   twtext += GetTweetTextComment(twdata.comment);
-  twtext += "#ストVラウンジ募集";
+  twtext += '#ストVラウンジ募集';
   return (twtext);
 }
 
 export function GetUrl(twdata: TweetData) {
-  if (twdata.url !== "") {
+  if (twdata.url !== '') {
     return twdata.url;
   }
   if (string2boolean(twdata.attachToolUrl, true)) {
     const rank = GetLpRank(twdata.lp);
-    if (rank !== "") {
-      return GITHUB_PAGES_URL + "/rank/" + rank + ".html";
+    if (rank !== '') {
+      return GITHUB_PAGES_URL + '/rank/' + rank + '.html';
     }
     return GITHUB_PAGES_URL;
   }
-  return "";
+  return '';
 }
 
 export function submitTweet(twdata: TweetData) {
-  const twdata_uri = encodeURIComponent(GetTweetText(twdata) + "\n");
+  const twdata_uri = encodeURIComponent(GetTweetText(twdata) + '\n');
   const url = GetUrl(twdata);
-  let openurl = "https://twitter.com/intent/tweet?text=" + twdata_uri;
-  if (url !== "") {
-    openurl += "&url=" + url;
+  let openurl = 'https://twitter.com/intent/tweet?text=' + twdata_uri;
+  if (url !== '') {
+    openurl += '&url=' + url;
   }
-  window.open(openurl, "_blank");
+  window.open(openurl, '_blank');
 }
 
 export function launchTwitterLive() {
-  window.open("https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live", "_blank");
+  window.open('https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live', '_blank');
 }
 
 export function launchNewIssue() {
-  const text_uri = encodeURIComponent("スト5ラウンジ募集ツール(@hyde142857)\n▽▽▽ 要望などを記載ください。 ▽▽▽\n");
-  window.open("https://twitter.com/intent/tweet?text=" + text_uri, "_blank");
+  const text_uri = encodeURIComponent('スト5ラウンジ募集ツール(@hyde142857)\n▽▽▽ 要望などを記載ください。 ▽▽▽\n');
+  window.open('https://twitter.com/intent/tweet?text=' + text_uri, '_blank');
 }
 
 export function launchGithub() {
-  window.open(GITHUB_REPOS_URL, "_blank");
+  window.open(GITHUB_REPOS_URL, '_blank');
 }
 
 export function copyClipboard(twdata: TweetData, hundleShow: () => void) {
-  const text = GetTweetText(twdata) + "\n" + GetUrl(twdata);
+  const text = GetTweetText(twdata) + '\n' + GetUrl(twdata);
   if (navigator.clipboard) {
     navigator.clipboard.writeText(text).then(() => {
       hundleShow();
@@ -199,23 +199,23 @@ export function saveLocalStorage(twdata: TweetData) {
 
 export function TweetDataGetDefault() {
   const twdata: TweetData = {
-    message: "",
-    fightingId: "",
-    charactor: "",
-    lp: "",
-    loungePlayerMax: "",
-    loungePlayerPrivate: "",
-    gameround: "3ラウンド",
-    gametime: "99秒",
-    game: "1本先取",
-    gameset: "",
-    charactorSelect: "OFF",
-    hardware: "どっちもOK",
-    speedlimit: "OFF",
-    passcode: "",
-    url: "",
-    attachToolUrl: "true",
-    comment: "",
+    message: '',
+    fightingId: '',
+    charactor: '',
+    lp: '',
+    loungePlayerMax: '',
+    loungePlayerPrivate: '',
+    gameround: '3ラウンド',
+    gametime: '99秒',
+    game: '1本先取',
+    gameset: '',
+    charactorSelect: 'OFF',
+    hardware: 'どっちもOK',
+    speedlimit: 'OFF',
+    passcode: '',
+    url: '',
+    attachToolUrl: 'true',
+    comment: '',
   };
   return twdata;
 }
@@ -233,23 +233,23 @@ export function string2boolean(booleanStr: string, defaultval: boolean): boolean
 
 export function loadLocalStorage() {
   const twdata: TweetData = TweetDataGetDefault();
-  twdata.message = localstorageGetItem('sfvlounge_roommatch.message', "");
-  twdata.fightingId = localstorageGetItem('sfvlounge_roommatch.fightingid', "");
-  twdata.charactor = localstorageGetItem('sfvlounge_roommatch.charactor', "");
-  twdata.lp = localstorageGetItem('sfvlounge_roommatch.lp', "");
-  twdata.loungePlayerMax = localstorageGetItem('sfvlounge_roommatch.loungeplayermax', "");
-  twdata.loungePlayerPrivate = localstorageGetItem('sfvlounge_roommatch.loungeplayerprivate', "");
-  twdata.gameround = localstorageGetItem('sfvlounge_roommatch.gameround', "3ラウンド");
-  twdata.gametime = localstorageGetItem('sfvlounge_roommatch.gametime', "99秒");
-  twdata.game = localstorageGetItem('sfvlounge_roommatch.game', "1本先取");
-  twdata.gameset = localstorageGetItem('sfvlounge_roommatch.gameset', "");
-  twdata.charactorSelect = localstorageGetItem('sfvlounge_roommatch.charactorselect', "OFF");
-  twdata.hardware = localstorageGetItem('sfvlounge_roommatch.hardware', "どっちもOK");
-  twdata.speedlimit = localstorageGetItem('sfvlounge_roommatch.speedlimit', "OFF");
-  twdata.passcode = localstorageGetItem('sfvlounge_roommatch.passcode', "");
-  twdata.url = localstorageGetItem('sfvlounge_roommatch.url', "");
-  twdata.attachToolUrl = localstorageGetItem('sfvlounge_roommatch.attachtoolurl', "true");
-  twdata.comment = localstorageGetItem('sfvlounge_roommatch.comment', "");
+  twdata.message = localstorageGetItem('sfvlounge_roommatch.message', '');
+  twdata.fightingId = localstorageGetItem('sfvlounge_roommatch.fightingid', '');
+  twdata.charactor = localstorageGetItem('sfvlounge_roommatch.charactor', '');
+  twdata.lp = localstorageGetItem('sfvlounge_roommatch.lp', '');
+  twdata.loungePlayerMax = localstorageGetItem('sfvlounge_roommatch.loungeplayermax', '');
+  twdata.loungePlayerPrivate = localstorageGetItem('sfvlounge_roommatch.loungeplayerprivate', '');
+  twdata.gameround = localstorageGetItem('sfvlounge_roommatch.gameround', '3ラウンド');
+  twdata.gametime = localstorageGetItem('sfvlounge_roommatch.gametime', '99秒');
+  twdata.game = localstorageGetItem('sfvlounge_roommatch.game', '1本先取');
+  twdata.gameset = localstorageGetItem('sfvlounge_roommatch.gameset', '');
+  twdata.charactorSelect = localstorageGetItem('sfvlounge_roommatch.charactorselect', 'OFF');
+  twdata.hardware = localstorageGetItem('sfvlounge_roommatch.hardware', 'どっちもOK');
+  twdata.speedlimit = localstorageGetItem('sfvlounge_roommatch.speedlimit', 'OFF');
+  twdata.passcode = localstorageGetItem('sfvlounge_roommatch.passcode', '');
+  twdata.url = localstorageGetItem('sfvlounge_roommatch.url', '');
+  twdata.attachToolUrl = localstorageGetItem('sfvlounge_roommatch.attachtoolurl', 'true');
+  twdata.comment = localstorageGetItem('sfvlounge_roommatch.comment', '');
   return twdata;
 }
 
