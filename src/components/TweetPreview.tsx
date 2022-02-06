@@ -1,12 +1,10 @@
 import { Card, CardMedia, Container, Grid, Typography } from '@mui/material';
-import { GetLpRank, GetTweetText, GetUrl, string2boolean } from '../api/Utils';
+import { GetLpRank, GetTweetText, GetUrl, string2boolean, ThisPageGetDesc, ThisPageGetTitle } from '../api/Utils';
 import { Props } from '../types/Defs';
 
 function ToolAppTwitterCard(props: Props) {
-  const title_obj = document.querySelector('meta[property="og:title"]');
-  const title = title_obj ? title_obj.getAttribute('content') : '';
-  const desc_obj = document.querySelector('meta[property="og:description"]');
-  const desc = desc_obj ? desc_obj.getAttribute('content') : '';
+  const title = ThisPageGetTitle();
+  const desc = ThisPageGetDesc();
   const rank = GetLpRank(props.twdata.lp);
   let imgurl = 'ogimage_summary.png';
   if (rank !== '') {
