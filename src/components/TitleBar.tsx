@@ -11,13 +11,13 @@ interface TitleBarProps {
 
 export default function TitleBar(props: TitleBarProps) {
   return (
-    <AppBar position="static">
+    <AppBar position='static'>
       <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
           スト5ラウンジ募集ツール
         </Typography>
         <div>
-          <IconButton sx={{ ml: 1 }} onClick={props.onClickColorMode} color="inherit">
+          <IconButton sx={{ ml: 1 }} onClick={props.onClickColorMode} color='inherit'>
             {props.palettemode === 'dark' ? <Brightness4Icon /> : <Brightness7Icon />}
           </IconButton>
         </div>

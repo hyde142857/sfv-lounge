@@ -16,7 +16,7 @@ function ClipboardButton(props: Props) {
   return (
     <>
       <Button
-        variant="contained" color="secondary" fullWidth size='large'
+        variant='contained' color='secondary' fullWidth size='large'
         startIcon={<ContentCopyIcon />}
         onClick={() => copyClipboard(props.twdata, handleShow)}
       >
@@ -26,15 +26,15 @@ function ClipboardButton(props: Props) {
       <Dialog
         open={show}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
       >
         <Box>
-          <DialogTitle id="alert-dialog-title">
+          <DialogTitle id='alert-dialog-title'>
             クリップボードにコピー
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <DialogContentText id='alert-dialog-description'>
               クリップボードにコピーしました。ペーストしてご利用ください。
             </DialogContentText>
           </DialogContent>

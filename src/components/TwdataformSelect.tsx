@@ -23,7 +23,7 @@ function TwdataformSelect(props: TwdataformSelectProps) {
         }
       >
         {
-          props.options.map((opt) => <MenuItem key={opt} value={opt}>{opt === "" ? "選択なし" : opt}</MenuItem>)
+          props.options.map((opt) => <MenuItem key={opt} value={opt}>{opt === '' ? '選択なし' : opt}</MenuItem>)
         }
       </Select>
     </FormControl>

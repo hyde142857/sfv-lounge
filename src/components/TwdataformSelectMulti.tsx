@@ -25,7 +25,7 @@ const MenuProps = {
 
 function getSelectedOpts(props: TwdataformSelectMultiProps) {
   const value = props.twdata[props.twdataKey];
-  const selected = value.replace("　", " ").split(' ');
+  const selected = value.replace('　', ' ').split(' ');
   let selected_opts: string[] = [];
   if (value !== "") {
     for (const opt of selected) {
@@ -39,18 +39,18 @@ function getSelectedOpts(props: TwdataformSelectMultiProps) {
 }
 
 function getItem(opt: string,selected_opts: string[]) {
-  if (opt.startsWith("optHeader:")) {
-    return (<ListSubheader key={opt}>{opt.substring("optHeader:".length)}</ListSubheader>);
+  if (opt.startsWith('optHeader:')) {
+    return (<ListSubheader key={opt}>{opt.substring('optHeader:'.length)}</ListSubheader>);
   }
-  return (<MenuItem key={opt + "-menuitem"} value={opt}>
-    <Checkbox key={opt + "-checkbox"} checked={selected_opts.indexOf(opt) > -1} />
-    <ListItemText key={opt + "-listitem"} primary={opt} />
+  return (<MenuItem key={opt + '-menuitem'} value={opt}>
+    <Checkbox key={opt + '-checkbox'} checked={selected_opts.indexOf(opt) > -1} />
+    <ListItemText key={opt + '-listitem'} primary={opt} />
   </MenuItem>);
 }
 
 function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
   let selected_opts = getSelectedOpts(props);
-  const comment = props.comment || "";
+  const comment = props.comment || '';
 
   return (<>
     <FormControl fullWidth>
@@ -70,16 +70,16 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
         onChange={
           e => {
             const value = typeof e.target.value == 'string' ? [e.target.value] : e.target.value;
-            if (value.indexOf("") > -1) {
-              props.updateTwdata(props.twdataKey, "");
+            if (value.indexOf('') > -1) {
+              props.updateTwdata(props.twdataKey, '');
             } else {
-              props.updateTwdata(props.twdataKey, value.join(" "));
+              props.updateTwdata(props.twdataKey, value.join(' '));
             }
           }
         }
         MenuProps={MenuProps}
       >
-        <MenuItem key="" value="">選択なし</MenuItem>
+        <MenuItem key='' value=''>選択なし</MenuItem>
         {
           props.options.map((opt) => getItem(opt,selected_opts))
         }
