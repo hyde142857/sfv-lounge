@@ -19,7 +19,7 @@ export default function ToggleColorModePage() {
   );
   useEffect(() => {
     saveColorMode(mode);
-  }, [mode])
+  }, [mode]);
 
   return (
     <ColorModeContext.Provider value={colorMode}>
