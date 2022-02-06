@@ -5,8 +5,8 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 interface TitleBarProps {
-  onClickColorMode: () => void,
-  palettemode: PaletteMode,
+  onClickColorMode: () => void;
+  palettemode: PaletteMode;
 }
 
 export default function TitleBar(props: TitleBarProps) {

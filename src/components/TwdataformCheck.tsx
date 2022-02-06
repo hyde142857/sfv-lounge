@@ -8,7 +8,7 @@ export type TwdataformCheckProps = {
   twdataKey: keyof TweetData;
   twdata: TweetData;
   updateTwdata: (key: keyof TweetData, val: string) => void;
-}
+};
 
 function TwdataformCheck(props: TwdataformCheckProps) {
   const comment = props.comment || '';

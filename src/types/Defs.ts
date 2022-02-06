@@ -23,6 +23,4 @@ export interface TweetData {
 
 export type Props = {
   twdata: TweetData;
-}
-
-export {};
+};

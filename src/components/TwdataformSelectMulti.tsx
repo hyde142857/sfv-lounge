@@ -1,7 +1,7 @@
-import { TweetData } from "../types/Defs";
-import { FormControl, InputLabel, MenuItem, Select, ListSubheader, FormHelperText, Checkbox, ListItemText, Chip } from "@mui/material";
+import { TweetData } from '../types/Defs';
+import { FormControl, InputLabel, MenuItem, Select, ListSubheader, FormHelperText, Checkbox, ListItemText, Chip } from '@mui/material';
 
-import { Box } from "@mui/system";
+import { Box } from '@mui/system';
 
 export type TwdataformSelectMultiProps = {
   label: string;
@@ -10,7 +10,7 @@ export type TwdataformSelectMultiProps = {
   twdata: TweetData;
   comment?: string;
   updateTwdata: (key: keyof TweetData, val: string) => void;
-}
+};
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -26,8 +26,8 @@ const MenuProps = {
 function getSelectedOpts(props: TwdataformSelectMultiProps) {
   const value = props.twdata[props.twdataKey];
   const selected = value.replace('　', ' ').split(' ');
-  let selected_opts: string[] = [];
-  if (value !== "") {
+  const selected_opts: string[] = [];
+  if (value !== '') {
     for (const opt of selected) {
       const opt_trimed = opt.trim();
       if (props.options.includes(opt_trimed)) {
@@ -38,7 +38,7 @@ function getSelectedOpts(props: TwdataformSelectMultiProps) {
   return selected_opts;
 }
 
-function getItem(opt: string,selected_opts: string[]) {
+function getItem(opt: string, selected_opts: string[]) {
   if (opt.startsWith('optHeader:')) {
     return (<ListSubheader key={opt}>{opt.substring('optHeader:'.length)}</ListSubheader>);
   }
@@ -69,7 +69,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
         )}
         onChange={
           e => {
-            const value = typeof e.target.value == 'string' ? [e.target.value] : e.target.value;
+            const value = typeof e.target.value === 'string' ? [e.target.value] : e.target.value;
             if (value.indexOf('') > -1) {
               props.updateTwdata(props.twdataKey, '');
             } else {
@@ -81,7 +81,7 @@ function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
       >
         <MenuItem key='' value=''>選択なし</MenuItem>
         {
-          props.options.map((opt) => getItem(opt,selected_opts))
+          props.options.map((opt) => getItem(opt, selected_opts))
         }
       </Select>
       <FormHelperText>

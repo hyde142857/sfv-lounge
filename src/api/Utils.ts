@@ -220,7 +220,7 @@ export function TweetDataGetDefault() {
   return twdata;
 }
 
-function localstorageGetItem(key: string, defaultval: string):string {
+function localstorageGetItem(key: string, defaultval: string): string {
   return localStorage.getItem(key) || defaultval;
 }
 

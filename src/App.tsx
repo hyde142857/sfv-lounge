@@ -1,4 +1,4 @@
-import ToggleColorModePage from "./pages/ToggleColorModePage";
+import ToggleColorModePage from './pages/ToggleColorModePage';
 
 function App() {
   return (<ToggleColorModePage />);
