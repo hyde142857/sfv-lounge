@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 import StorageIcon from '@mui/icons-material/Storage';
 
-function saveImpl(twdata: TweetData, handleShow:() => void) {
+function saveImpl(twdata: TweetData, handleShow: () => void) {
   saveLocalStorage(twdata);
   handleShow();
 }

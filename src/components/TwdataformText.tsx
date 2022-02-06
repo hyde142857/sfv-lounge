@@ -9,7 +9,7 @@ export type TwdataformTextProps = {
   twdataKey: keyof TweetData;
   twdata: TweetData;
   updateTwdata: (key: keyof TweetData, val: string) => void;
-}
+};
 
 function TwdataformText(props: TwdataformTextProps) {
   const comment = props.comment || '';

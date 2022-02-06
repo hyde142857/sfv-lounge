@@ -1,5 +1,5 @@
-import { TweetData } from "../types/Defs";
-import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { TweetData } from '../types/Defs';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 export type TwdataformSelectProps = {
   label: string;
@@ -7,7 +7,7 @@ export type TwdataformSelectProps = {
   twdataKey: keyof TweetData;
   twdata: TweetData;
   updateTwdata: (key: keyof TweetData, val: string) => void;
-}
+};
 
 function TwdataformSelect(props: TwdataformSelectProps) {
   return (<>

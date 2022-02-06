@@ -12,10 +12,10 @@ function TweetFormPage() {
   const [twdata, setTwdata] = useState<TweetData>(loadLocalStorage());
 
   const updateTwdata = (key: keyof TweetData, val: string) => {
-    let ltwdata: TweetData = { ...twdata };
+    const ltwdata: TweetData = { ...twdata };
     ltwdata[key] = val;
     setTwdata(ltwdata);
-  }
+  };
 
   return (
     <Grid container spacing={2}>
