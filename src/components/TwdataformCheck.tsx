@@ -11,7 +11,7 @@ export type TwdataformCheckProps = {
 }
 
 function TwdataformCheck(props: TwdataformCheckProps) {
-  const comment = props.comment || "";
+  const comment = props.comment || '';
   return (<>
     <FormControlLabel
       control={

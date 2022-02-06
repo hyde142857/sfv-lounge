@@ -12,12 +12,12 @@ export type TwdataformTextProps = {
 }
 
 function TwdataformText(props: TwdataformTextProps) {
-  const comment = props.comment || "";
+  const comment = props.comment || '';
   const isInvalid = props.isInvalid || false;
-  const invalidFeedback = props.invalidFeedback || "";
+  const invalidFeedback = props.invalidFeedback || '';
   return (<>
     <FormControl fullWidth>
-      <TextField variant="outlined"
+      <TextField variant='outlined'
         id={props.twdataKey}
         label={props.label}
         value={props.twdata[props.twdataKey]}
@@ -25,7 +25,7 @@ function TwdataformText(props: TwdataformTextProps) {
           e => { props.updateTwdata(props.twdataKey, e.target.value); }
         }
         error={isInvalid}
-        helperText={(isInvalid ? invalidFeedback : "") + comment}
+        helperText={(isInvalid ? invalidFeedback : '') + comment}
       />
     </FormControl>
   </>

@@ -21,7 +21,7 @@ function SaveButton(props: Props) {
   return (
     <>
       <Button
-        variant="contained" color="warning" fullWidth size='large'
+        variant='contained' color='warning' fullWidth size='large'
         startIcon={<StorageIcon />}
         onClick={() => saveImpl(props.twdata, handleShow)}
       >
@@ -30,15 +30,15 @@ function SaveButton(props: Props) {
       <Dialog
         open={show}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby='modal-modal-title'
+        aria-describedby='modal-modal-description'
       >
         <Box>
-          <DialogTitle id="alert-dialog-title">
+          <DialogTitle id='alert-dialog-title'>
             ブラウザにデータ保存
           </DialogTitle>
           <DialogContent>
-            <DialogContentText id="alert-dialog-description">
+            <DialogContentText id='alert-dialog-description'>
               保存しました。
             </DialogContentText>
           </DialogContent>
