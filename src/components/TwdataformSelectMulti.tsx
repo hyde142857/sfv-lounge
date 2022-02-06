@@ -49,7 +49,7 @@ function getItem(opt: string, selected_opts: string[]) {
 }
 
 function TwdataformSelectMulti(props: TwdataformSelectMultiProps) {
-  let selected_opts = getSelectedOpts(props);
+  const selected_opts = getSelectedOpts(props);
   const comment = props.comment || '';
 
   return (<>

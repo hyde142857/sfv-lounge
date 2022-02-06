@@ -8,7 +8,7 @@ export type TwdataformTextareaProps = {
   twdataKey: keyof TweetData;
   twdata: TweetData;
   updateTwdata: (key: keyof TweetData, val: string) => void;
-}
+};
 
 function TwdataformTextarea(props: TwdataformTextareaProps) {
   return (<>
