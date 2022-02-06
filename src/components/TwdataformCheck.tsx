@@ -17,7 +17,7 @@ function TwdataformCheck(props: TwdataformCheckProps) {
       control={
         <Checkbox
           id={props.twdataKey}
-          defaultChecked={string2boolean(props.twdata.attachToolUrl, true)}
+          checked={string2boolean(props.twdata.attachToolUrl, true)}
           onChange={
             e => { props.updateTwdata(props.twdataKey, String(e.target.checked)); }
           }
