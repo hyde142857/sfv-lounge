@@ -77,7 +77,7 @@ function MainApp(props:MainAppProps) {
     <Container>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Typography variant="body2" color="text.secondary" align="center" {...props}>
+          <Typography variant="body2" color="text.secondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://twitter.com/hyde142857">
               Hyde

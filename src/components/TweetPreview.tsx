@@ -40,10 +40,8 @@ function TweetPreview(props: Props) {
     <>
       <Container>
         <Grid item xs={12}>
-          <div>
-            {GetTweetText(props.twdata).split('\n').map((itm, i) => (<>{itm} <br key={"preview-br-" + String(i)} /></>))}
-            {!toolUrl && GetUrl(props.twdata)}
-          </div>
+          {GetTweetText(props.twdata).split('\n').map((itm, i) => (<div key={'preview-text-' + String(i)}>{itm} <br key={"preview-br-" + String(i)} /></div>))}
+          <div key='preview-url-'>{!toolUrl && GetUrl(props.twdata)}</div>
         </Grid>
       </Container>
       {toolUrl && (<ToolAppTwitterCard twdata={props.twdata} />)}
