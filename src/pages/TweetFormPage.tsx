@@ -21,9 +21,9 @@ function TweetFormPage() {
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <TwdataformText twdata={twdata} updateTwdata={updateTwdata}
-          label="Fighter's ID" twdataKey='fightingId'
+          label='Fighter&#39;s ID' twdataKey='fightingId'
           isInvalid={FightingIdIsInvalid(twdata)}
-          invalidFeedback="Fighter's IDの入力は、必須です。"
+          invalidFeedback='Fighter&#39;s IDの入力は、必須です。'
         />
       </Grid>
       <Grid item xs={12}>

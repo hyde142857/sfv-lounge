@@ -60,7 +60,7 @@ function GetTweetTextCharactor(charactor: string) {
 
 function GetTweetTextLp(lp: string) {
   if (lp !== '') {
-    let str: string[] = [];
+    const str: string[] = [];
     str.push('【LP】' + lp);
     if (GetLpRank(lp) !== '') {
       str.push('[' + GetLpRank(lp) + ']');
