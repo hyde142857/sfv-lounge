@@ -1,5 +1,17 @@
 import { GITHUB_PAGES_URL, GITHUB_REPOS_URL, TweetData } from '../types/Defs';
 
+export function ThisPageGetTitle(): string {
+  const title_obj = document.querySelector('meta[property="og:title"]');
+  const title = title_obj ? title_obj.getAttribute('content') : '';
+  return title || '';
+}
+
+export function ThisPageGetDesc(): string {
+  const desc_obj = document.querySelector('meta[property="og:description"]');
+  const desc = desc_obj ? desc_obj.getAttribute('content') : '';
+  return desc || '';
+}
+
 export function FightingIdIsInvalid(twdata: TweetData) {
   if (twdata.fightingId === '') {
     return true;
