@@ -5,7 +5,7 @@ import MainAppPage from './MainAppPage';
 
 const ColorModeContext = createContext({ toggleColorMode: () => { /* do nothing */ } });
 
-export function ToggleColorModePage() {
+export default function ToggleColorModePage() {
   const [mode, setMode] = useState<'light' | 'dark'>(loadColorMode());
   const colorMode = useMemo(
     () => ({

@@ -10,11 +10,12 @@ import TwdataformSelect from './TwdataformSelect';
 import TwdataformSelectMulti from './TwdataformSelectMulti';
 import TwdataformCheck from './TwdataformCheck';
 import Copyright from './Copyright';
+import TitleBar from './TitleBar';
 
 export {
   TweetButton, SaveButton, TweetPreview, RequestButton,
   CheckLiveTweetButton, ClipboardButton,
   TwdataformText, TwdataformTextarea, TwdataformSelect, TwdataformSelectMulti,
   TwdataformCheck,
-  Copyright
+  TitleBar, Copyright
 };
