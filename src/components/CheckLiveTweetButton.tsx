@@ -5,7 +5,7 @@ import { launchTwitterLive } from '../api/Utils';
 function CheckLiveTweetButton() {
   return (
     <Button
-      variant="contained" fullWidth size='large'
+      variant='contained' fullWidth size='large'
       startIcon={<TwitterIcon />}
       onClick={() => launchTwitterLive()}
     >

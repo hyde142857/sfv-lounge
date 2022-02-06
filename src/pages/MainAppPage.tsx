@@ -5,8 +5,8 @@ import { CheckLiveTweetButton, RequestButton, Copyright, TitleBar } from '../com
 import TweetFormPage from './TweetFormPage';
 
 interface MainAppPageProps {
-  onClickColorMode: () => void,
-  palettemode: PaletteMode,
+  onClickColorMode: () => void;
+  palettemode: PaletteMode;
 }
 
 export default function MainAppPage(props: MainAppPageProps) {
@@ -30,11 +30,7 @@ export default function MainAppPage(props: MainAppPageProps) {
       </Grid>
     </Container>
     <Container>
-      <Grid container spacing={2}>
-        <Grid item xs={12}>
-          <Copyright />
-        </Grid>
-      </Grid>
+      <Copyright />
     </Container>
   </>);
 }
