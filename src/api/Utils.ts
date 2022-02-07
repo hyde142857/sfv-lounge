@@ -118,6 +118,21 @@ function GetTweetTextPleyerMax(playermax: string, playerprivate: string) {
   return '';
 }
 
+function GetTweetTextHardware(hardware: string) {
+  if (hardware !== 'どっちもOK') {
+    return '【ハード】' + hardware + '\n';
+  }
+  return '';
+}
+
+
+function GetTweetTextSpeedlimit(speedlimit: string) {
+  if (speedlimit !== 'OFF') {
+    return '【通信制限】' + speedlimit + '\n';
+  }
+  return '';
+}
+
 export function GetTweetText(twdata: TweetData) {
   let twtext = '';
   twtext += GetTweetTextMessage(twdata.message);
@@ -128,8 +143,8 @@ export function GetTweetText(twdata: TweetData) {
   twtext += GetTweetTextPleyerMax(twdata.loungePlayerMax, twdata.loungePlayerPrivate);
   twtext += '【連戦】' + twdata.game + twdata.gameset + '\n';
   twtext += '【キャラセレ】' + twdata.charactorSelect + '\n';
-  twtext += '【ハード】' + twdata.hardware + '\n';
-  twtext += '【通信制限】' + twdata.speedlimit + '\n';
+  twtext += GetTweetTextHardware(twdata.hardware);
+  twtext += GetTweetTextSpeedlimit(twdata.speedlimit);
   twtext += GetTweetTextPasscode(twdata.passcode);
   twtext += GetTweetTextComment(twdata.comment);
   twtext += '#ストVラウンジ募集';
