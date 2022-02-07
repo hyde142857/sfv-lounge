@@ -11,6 +11,25 @@
 
 https://hyde142857.github.io/sfv-lounge/
 
+### バグがあったよ！こんな機能ほしいよ！
+
+「バグを見つけました！」なら以下のところにチケットを作ってね。  
+起こし方とか条件とかちゃんと教えてくれると助かるよ。  
+https://github.com/hyde142857/sfv-lounge/issues/new
+
+「こんな機能ほしいよ！」なら以下のところからチケット作ってね。  
+https://github.com/hyde142857/sfv-lounge/issues/new
+
+## プログラムを修正して貢献したい
+プログラムを作りたいって！いいーじゃない！  
+以下の手順でお願いね。
+
+- このリポジトリをフォークしてね。
+- フォークしたリポジトリに新しいブランチ作って。 (`git checkout -b improve-feature`)
+- ソースコードを変更してコミットしてね。 (`git commit -am 'すげー機能作ったよ！'`)
+- プッシュしよう！ (`git push origin improve-feature`)
+- プルリクエストを作ろう！ 
+
 ## ライセンス
 
 Copyright (C) 2021 @hyde142857.  [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40hyde142857)](https://twitter.com/hyde142857).
