@@ -91,13 +91,13 @@ function TweetFormPage() {
       <Grid item xs={6}>
         <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
           label='ハード' twdataKey='hardware'
-          options={['どっちもOK', 'PlayStationのみ', 'PCのみ']}
+          options={['', 'どっちもOK', 'PlayStationのみ', 'PCのみ']}
         />
       </Grid>
       <Grid item xs={6}>
         <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
           label='通信制限' twdataKey='speedlimit'
-          options={['ON', 'OFF']}
+          options={['', '3から5', '4から5', '5のみ', 'ON', 'OFF']}
         />
       </Grid>
       <Grid item xs={6}>

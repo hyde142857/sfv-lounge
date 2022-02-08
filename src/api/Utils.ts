@@ -119,7 +119,7 @@ function GetTweetTextPleyerMax(playermax: string, playerprivate: string) {
 }
 
 function GetTweetTextHardware(hardware: string) {
-  if (hardware !== 'どっちもOK') {
+  if (hardware !== '') {
     return '【ハード】' + hardware + '\n';
   }
   return '';
@@ -127,7 +127,7 @@ function GetTweetTextHardware(hardware: string) {
 
 
 function GetTweetTextSpeedlimit(speedlimit: string) {
-  if (speedlimit !== 'OFF') {
+  if (speedlimit !== '') {
     return '【通信制限】' + speedlimit + '\n';
   }
   return '';
@@ -237,8 +237,8 @@ export function TweetDataGetDefault() {
     game: '1本先取',
     gameset: '',
     charactorSelect: 'OFF',
-    hardware: 'どっちもOK',
-    speedlimit: 'OFF',
+    hardware: '',
+    speedlimit: '',
     passcode: '',
     url: '',
     attachToolUrl: 'true',
@@ -271,8 +271,8 @@ export function loadLocalStorage() {
   twdata.game = localstorageGetItem('sfvlounge_roommatch.game', '1本先取');
   twdata.gameset = localstorageGetItem('sfvlounge_roommatch.gameset', '');
   twdata.charactorSelect = localstorageGetItem('sfvlounge_roommatch.charactorselect', 'OFF');
-  twdata.hardware = localstorageGetItem('sfvlounge_roommatch.hardware', 'どっちもOK');
-  twdata.speedlimit = localstorageGetItem('sfvlounge_roommatch.speedlimit', 'OFF');
+  twdata.hardware = localstorageGetItem('sfvlounge_roommatch.hardware', '');
+  twdata.speedlimit = localstorageGetItem('sfvlounge_roommatch.speedlimit', '');
   twdata.passcode = localstorageGetItem('sfvlounge_roommatch.passcode', '');
   twdata.url = localstorageGetItem('sfvlounge_roommatch.url', '');
   twdata.attachToolUrl = localstorageGetItem('sfvlounge_roommatch.attachtoolurl', 'true');
