@@ -202,10 +202,13 @@ export function GetTweetText(twdata: TweetData) {
 
 export function GetImgPath(twdata: TweetData) {
   const rank = GetLpRank(twdata.lp);
+  const firstchar = twdata.charactor.split(' ')[0];
+  if (rank !== '' && firstchar in CharacterLogoList) {
+    return 'rankandchar/' + rank + '-' + CharacterLogoList[firstchar];
+  }
   if (rank !== '') {
     return 'rank/' + rank;
   }
-  const firstchar = twdata.charactor.split(' ')[0];
   if (firstchar in CharacterLogoList) {
     return 'character/' + CharacterLogoList[firstchar];
   }
