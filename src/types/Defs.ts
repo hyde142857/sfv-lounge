@@ -16,6 +16,7 @@ export interface TweetData {
   hardware: string;
   speedlimit: string;
   passcode: string;
+  logotype: string;
   url: string;
   attachToolUrl: string;
   comment: string;

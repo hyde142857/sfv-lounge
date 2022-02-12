@@ -200,19 +200,43 @@ export function GetTweetText(twdata: TweetData) {
   return (twtext);
 }
 
-export function GetImgPath(twdata: TweetData) {
+function GetImgPathRankAndChar(twdata: TweetData) {
   const rank = GetLpRank(twdata.lp);
   const firstchar = twdata.charactor.split(' ')[0];
   if (rank !== '' && firstchar in CharacterLogoList) {
     return 'rankandchar/' + rank + '-' + CharacterLogoList[firstchar];
   }
   if (rank !== '') {
+    return GetImgPathRank(twdata);
+  }
+  return GetImgPathChar(twdata);
+}
+
+function GetImgPathRank(twdata: TweetData) {
+  const rank = GetLpRank(twdata.lp);
+  if (rank !== '') {
     return 'rank/' + rank;
   }
+  return '';
+}
+
+function GetImgPathChar(twdata: TweetData) {
+  const firstchar = twdata.charactor.split(' ')[0];
   if (firstchar in CharacterLogoList) {
     return 'character/' + CharacterLogoList[firstchar];
   }
   return '';
+}
+
+export function GetImgPath(twdata: TweetData) {
+  switch (twdata.logotype) {
+    case 'ランク+キャラ':
+      return GetImgPathRankAndChar(twdata);
+    case 'ランク':
+      return GetImgPathRank(twdata);
+    default:
+      return GetImgPathChar(twdata);
+  }
 }
 
 export function GetUrl(twdata: TweetData) {
@@ -263,6 +287,7 @@ export function copyClipboard(twdata: TweetData, hundleShow: () => void) {
 function saveLocalStorageTweettext(twdata: TweetData) {
   localStorage.setItem('sfvlounge_roommatch.message', twdata.message);
   localStorage.setItem('sfvlounge_roommatch.url', twdata.url);
+  localStorage.setItem('sfvlounge_roommatch.logotype', twdata.logotype);
   localStorage.setItem('sfvlounge_roommatch.attachtoolurl', String(twdata.attachToolUrl));
   localStorage.setItem('sfvlounge_roommatch.comment', twdata.comment);
 }
@@ -305,6 +330,7 @@ export function TweetDataGetDefault() {
     speedlimit: '',
     passcode: '',
     url: '',
+    logotype: 'ランク+キャラ',
     attachToolUrl: 'true',
     comment: '',
   };
@@ -339,6 +365,7 @@ export function loadLocalStorage() {
   twdata.speedlimit = localstorageGetItem('sfvlounge_roommatch.speedlimit', '');
   twdata.passcode = localstorageGetItem('sfvlounge_roommatch.passcode', '');
   twdata.url = localstorageGetItem('sfvlounge_roommatch.url', '');
+  twdata.logotype = localstorageGetItem('sfvlounge_roommatch.logotype', 'ランク+キャラ');
   twdata.attachToolUrl = localstorageGetItem('sfvlounge_roommatch.attachtoolurl', 'true');
   twdata.comment = localstorageGetItem('sfvlounge_roommatch.comment', '');
   return twdata;
