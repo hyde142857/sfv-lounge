@@ -89,7 +89,7 @@ const CharacterLogoList: { [key: string]: string } = {
   'あきら': 'akr',
   'ルーク': 'lke',
   // 'イレブン': '', // none
-}
+};
 
 export function GetLpRank(lp: string) {
   let rank = '';
