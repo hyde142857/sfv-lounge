@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IMGCAT=('rank' 'character')
+IMGCAT=('rank' 'character' 'rankandchar')
 
 for cat in "${IMGCAT[@]}"
 do

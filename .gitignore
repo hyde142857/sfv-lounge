@@ -1,5 +1,6 @@
 /public/rank/*.html
 /public/character/*.html
+/public/rankandchar/*.html
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
