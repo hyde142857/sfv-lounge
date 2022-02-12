@@ -42,6 +42,55 @@ const LpRankList: { [key: string]: number } = {
   'Warload': 300000,
 };
 
+const CharacterLogoList: { [key: string]: string } = {
+  'リュウ': 'ryu',
+  '春麗': 'cnl',
+  'ナッシュ': 'nsh',
+  'ベガ': 'veg',
+  'キャミィ': 'cmy',
+  'バーディー': 'brd',
+  'ケン': 'ken',
+  'ネカリ': 'ncl',
+  'バルログ': 'blr',
+  'レインボー・ミカ': 'rmk',
+  'ラシード': 'rsd',
+  'かりん': 'krn',
+  'ザンギエフ': 'zgf',
+  'ララ': 'lar',
+  'ダルシム': 'dsm',
+  'ファン': 'fan',
+  'アレックス': 'alx',
+  'ガイル': 'gul',
+  'いぶき': 'ibk',
+  'バイソン': 'bsn',
+  'ジュリ': 'jri',
+  'ユリアン': 'urn',
+  '豪鬼': 'gok',
+  'コーリン': 'kln',
+  'エド': 'ed',
+  'アビゲイル': 'abg',
+  'メナト': 'mnt',
+  '是空': 'zku',
+  'さくら': 'skr',
+  'ブランカ': 'blk',
+  'ファルケ': 'flk',
+  'コーディ': 'cdy',
+  'G': 'g_on',
+  'サガット': 'sag_on',
+  '影なる者': 'kge',
+  'ポイズン': 'psn',
+  'エドモンド本田': 'hnd',
+  'ルシア': 'lca',
+  'ギル': 'gil',
+  'セス': 'sth',
+  'ダン': 'dan',
+  'ローズ': 'rse',
+  'オロ': 'oro',
+  'あきら': 'akr',
+  'ルーク': 'lke',
+  // 'イレブン': '', // none
+}
+
 export function GetLpRank(lp: string) {
   let rank = '';
   if (!lp.match(/^\d+$/)) {
@@ -151,14 +200,26 @@ export function GetTweetText(twdata: TweetData) {
   return (twtext);
 }
 
+export function GetImgPath(twdata: TweetData) {
+  const rank = GetLpRank(twdata.lp);
+  if (rank !== '') {
+    return 'rank/' + rank;
+  }
+  const firstchar = twdata.charactor.split(' ')[0];
+  if (firstchar in CharacterLogoList) {
+    return 'character/' + CharacterLogoList[firstchar];
+  }
+  return '';
+}
+
 export function GetUrl(twdata: TweetData) {
   if (twdata.url !== '') {
     return twdata.url;
   }
   if (string2boolean(twdata.attachToolUrl, true)) {
-    const rank = GetLpRank(twdata.lp);
-    if (rank !== '') {
-      return GITHUB_PAGES_URL + '/rank/' + rank + '.html';
+    const path = GetImgPath(twdata);
+    if (path !== '') {
+      return GITHUB_PAGES_URL + '/' + path + '.html';
     }
     return GITHUB_PAGES_URL;
   }

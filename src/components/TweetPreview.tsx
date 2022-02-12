@@ -1,14 +1,14 @@
 import { Card, CardMedia, Container, Grid, Typography } from '@mui/material';
-import { GetLpRank, GetTweetText, GetUrl, string2boolean, ThisPageGetDesc, ThisPageGetTitle } from '../api/Utils';
+import { GetImgPath, GetTweetText, GetUrl, string2boolean, ThisPageGetDesc, ThisPageGetTitle } from '../api/Utils';
 import { Props } from '../types/Defs';
 
 function ToolAppTwitterCard(props: Props) {
   const title = ThisPageGetTitle();
   const desc = ThisPageGetDesc();
-  const rank = GetLpRank(props.twdata.lp);
   let imgurl = 'ogimage_summary.png';
-  if (rank !== '') {
-    imgurl = 'rank/' + rank + '.png';
+  const path = GetImgPath(props.twdata);
+  if (path !== '') {
+      imgurl = path + '.png';
   }
   return (<>
     <Grid item xs={3}>
