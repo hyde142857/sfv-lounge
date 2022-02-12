@@ -123,6 +123,12 @@ function TweetFormPage() {
         />
       </Grid>
       <Grid item xs={12}>
+        <TwdataformSelect twdata={twdata} updateTwdata={updateTwdata}
+          label='ロゴの種類' twdataKey='logotype'
+          options={['ランク+キャラ', 'ランク', 'キャラ']}
+        />
+      </Grid>
+      <Grid item xs={12}>
         <TwdataformTextarea twdata={twdata} updateTwdata={updateTwdata}
           label='先頭メッセージ' twdataKey='message'
         />
