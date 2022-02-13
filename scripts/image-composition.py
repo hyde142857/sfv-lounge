@@ -23,8 +23,8 @@ for rank in ranklist:
 for char in charlist:
     charimgs[char] = cv2.imread('./public/character/' + char, -1)
 
-height = 280
-width = 280
+height = 220
+width = 220
 
 for rank, rankimg in rankimgs.items():
     resize_rank_img = np.zeros((height, width, 4))
@@ -35,6 +35,7 @@ for rank, rankimg in rankimgs.items():
 
     for char, charimg in charimgs.items():
         resize_char_img = np.zeros((height, width, 4))
+        charimg = charimg[:-50,:]
         img_height, img_width = charimg.shape[:2]
         img_space = int((width - img_width)/2)
         resize_char_img[(height - img_height):height,
