@@ -263,6 +263,13 @@ export function submitTweet(twdata: TweetData) {
   window.open(openurl, '_blank');
 }
 
+export function shareApps() {
+  const twdata_uri = encodeURIComponent('\n');
+  let openurl = 'https://twitter.com/intent/tweet?text=' + twdata_uri;
+  openurl += '&url=' + GITHUB_PAGES_URL;
+  window.open(openurl, '_blank');
+}
+
 export function launchTwitterLive() {
   window.open('https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live', '_blank');
 }

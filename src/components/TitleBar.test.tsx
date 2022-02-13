@@ -3,7 +3,7 @@ import { TitleBar } from '.';
 
 test('TitleBar click colormode change', () => {
   let shareSpy = jest.fn();
-  navigator.share = shareSpy;
+  window.open = shareSpy;
   let onClickColorModeSpy = jest.fn();
 
   render(<TitleBar
@@ -18,7 +18,7 @@ test('TitleBar click colormode change', () => {
 
 test('TitleBar click share', () => {
   let shareSpy = jest.fn();
-  navigator.share = shareSpy;
+  window.open = shareSpy;
   let onClickColorModeSpy = jest.fn();
 
   render(<TitleBar

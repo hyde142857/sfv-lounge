@@ -4,8 +4,7 @@ import {
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import IosShareIcon from '@mui/icons-material/IosShare';
-import { GITHUB_PAGES_URL } from '../types/Defs';
-import { ThisPageGetDesc, ThisPageGetTitle } from '../api/Utils';
+import { shareApps } from '../api/Utils';
 
 interface TitleBarProps {
   onClickColorMode: () => void;
@@ -13,12 +12,7 @@ interface TitleBarProps {
 }
 
 function shareHandler() {
-  const shareData: ShareData = {
-    title: ThisPageGetTitle(),
-    text: ThisPageGetDesc(),
-    url: GITHUB_PAGES_URL,
-  };
-  navigator.share(shareData);
+  shareApps();
 }
 
 export default function TitleBar(props: TitleBarProps) {
