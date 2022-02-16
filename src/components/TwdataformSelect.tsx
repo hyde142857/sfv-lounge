@@ -1,5 +1,6 @@
 import { TweetData } from '../types/Defs';
 import { FormControl, FormHelperText, InputLabel, MenuItem, Select } from '@mui/material';
+import { isMobile } from 'react-device-detect';
 
 export type TwdataformSelectProps = {
   label: string;
@@ -10,12 +11,17 @@ export type TwdataformSelectProps = {
   updateTwdata: (key: keyof TweetData, val: string) => void;
 };
 
+function GetLabel(opt: string) {
+  return opt === '' ? '選択なし' : opt;
+}
+
 function TwdataformSelect(props: TwdataformSelectProps) {
   const comment = props.comment || '';
+  const native = isMobile;
   return (<>
     <FormControl fullWidth>
       <InputLabel>{props.label}</InputLabel>
-      <Select
+      <Select native={native}
         labelId={props.twdataKey}
         id={props.twdataKey}
         value={props.twdata[props.twdataKey]}
@@ -25,7 +31,13 @@ function TwdataformSelect(props: TwdataformSelectProps) {
         }
       >
         {
-          props.options.map((opt) => <MenuItem key={opt} value={opt}>{opt === '' ? '選択なし' : opt}</MenuItem>)
+          props.options.map((opt) => (
+            native ? (
+              <option key={opt} value={opt}>{opt}</option>
+            ) : (
+              <MenuItem key={opt} value={opt}>{GetLabel(opt)}</MenuItem>
+            )
+          ))
         }
       </Select>
       <FormHelperText>{comment}</FormHelperText>
