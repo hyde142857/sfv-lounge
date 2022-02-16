@@ -2,6 +2,7 @@ import TweetPreview from './TweetPreview';
 import SaveButton from './SaveButton';
 import TweetButton from './TweetButton';
 import RequestButton from './RequestButton';
+import CheckTweetBotButton from './CheckTweetBotButton';
 import CheckLiveTweetButton from './CheckLiveTweetButton';
 import ClipboardButton from './ClipboardButton';
 import TwdataformText from './TwdataformText';
@@ -14,7 +15,7 @@ import TitleBar from './TitleBar';
 
 export {
   TweetButton, SaveButton, TweetPreview, RequestButton,
-  CheckLiveTweetButton, ClipboardButton,
+  CheckLiveTweetButton, CheckTweetBotButton, ClipboardButton,
   TwdataformText, TwdataformTextarea, TwdataformSelect, TwdataformSelectMulti,
   TwdataformCheck,
   TitleBar, Copyright
