@@ -196,7 +196,9 @@ export function GetTweetText(twdata: TweetData) {
   twtext += GetTweetTextSpeedlimit(twdata.speedlimit);
   twtext += GetTweetTextPasscode(twdata.passcode);
   twtext += GetTweetTextComment(twdata.comment);
-  twtext += '#ストVラウンジ募集';
+  if (twdata.attachHashTag === 'true') {
+    twtext += '#ストVラウンジ募集';
+  }
   return (twtext);
 }
 
@@ -301,6 +303,7 @@ function saveLocalStorageTweettext(twdata: TweetData) {
   localStorage.setItem('sfvlounge_roommatch.logotype', twdata.logotype);
   localStorage.setItem('sfvlounge_roommatch.attachtoolurl', String(twdata.attachToolUrl));
   localStorage.setItem('sfvlounge_roommatch.comment', twdata.comment);
+  localStorage.setItem('sfvlounge_roommatch.attachhashtag', String(twdata.attachHashTag));
 }
 
 function saveLocalStoragePlayerdata(twdata: TweetData) {
@@ -344,6 +347,7 @@ export function TweetDataGetDefault() {
     logotype: 'ランク+キャラ',
     attachToolUrl: 'true',
     comment: '',
+    attachHashTag: 'true',
   };
   return twdata;
 }
@@ -379,6 +383,7 @@ export function loadLocalStorage() {
   twdata.logotype = localstorageGetItem('sfvlounge_roommatch.logotype', 'ランク+キャラ');
   twdata.attachToolUrl = localstorageGetItem('sfvlounge_roommatch.attachtoolurl', 'true');
   twdata.comment = localstorageGetItem('sfvlounge_roommatch.comment', '');
+  twdata.attachHashTag = localstorageGetItem('sfvlounge_roommatch.attachhashtag', 'true');
   return twdata;
 }
 

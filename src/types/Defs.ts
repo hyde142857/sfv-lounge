@@ -20,6 +20,7 @@ export interface TweetData {
   url: string;
   attachToolUrl: string;
   comment: string;
+  attachHashTag: string;
 }
 
 export type Props = {
