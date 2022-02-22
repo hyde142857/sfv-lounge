@@ -139,6 +139,11 @@ function TweetFormPage() {
         />
       </Grid>
       <Grid item xs={12}>
+        <TwdataformCheck twdata={twdata} updateTwdata={updateTwdata}
+          label='#ストVラウンジ募集 を付与する。' twdataKey='attachHashTag'
+        />
+      </Grid>
+      <Grid item xs={12}>
         <hr />
         <InputLabel>プレビュー</InputLabel>
       </Grid>
