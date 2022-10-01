@@ -180,7 +180,7 @@ function GetTweetTextCharactor(charactor: string) {
   return '';
 }
 
-function GetTweetTextLp(lp: string) {
+export function GetTweetTextLp(lp: string) {
   if (lp !== '') {
     const str: string[] = [];
     str.push('【LP】' + lp);

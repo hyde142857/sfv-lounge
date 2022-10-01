@@ -2,7 +2,7 @@ import { GITHUB_PAGES_URL, GITHUB_REPOS_URL } from '../types/Defs';
 import {
   TweetDataGetDefault,
   FightingIdIsInvalid,
-  GetTweetText, GetLpRank, GetUrl,
+  GetTweetText, GetLpRank, GetUrl, GetTweetTextLp,
   loadLocalStorage, saveLocalStorage, launchTwitterLive, submitTweet, launchNewIssue, launchGithub
 } from './Utils'
 
@@ -23,6 +23,19 @@ test('GetLpRank()', () => {
   expect(GetLpRank('4000')).toEqual('Gold');
   expect(GetLpRank('11111')).toEqual('SuperPlatinum');
   expect(GetLpRank('400000')).toEqual('Warload');
+  expect(GetLpRank('スパプラ')).toEqual('SuperPlatinum');
+});
+
+test('GetTweetLpText()', () => {
+  expect(GetTweetTextLp('')).toEqual('');
+  expect(GetTweetTextLp('hoge')).toEqual('【LP】hoge\n');
+  expect(GetTweetTextLp('11111 hoge')).toEqual('【LP】11111 hoge\n');
+  expect(GetTweetTextLp('0')).toEqual('【LP】0 [Rookie]\n');
+  expect(GetTweetTextLp('500')).toEqual('【LP】500 [Bronze]\n');
+  expect(GetTweetTextLp('4000')).toEqual('【LP】4000 [Gold]\n');
+  expect(GetTweetTextLp('11111')).toEqual('【LP】11111 [SuperPlatinum]\n');
+  expect(GetTweetTextLp('400000')).toEqual('【LP】400000 [Warload]\n');
+  expect(GetTweetTextLp('スパプラ')).toEqual('【LP】スパプラ\n');
 });
 
 test('GetUrl()', () => {
