@@ -42,6 +42,60 @@ const LpRankList: { [key: string]: number } = {
   'Warload': 300000,
 };
 
+const LpRankExpressionList: { [key: string]: string } = {
+  'Rookie': 'Rookie',
+  'ルーキー': 'Rookie',
+  'Bronze': 'Bronze',
+  'ブロンズ': 'Bronze',
+  'SuperBronze': 'SuperBronze',
+  'スーパーブロンズ': 'SuperBronze',
+  'スパブロ': 'SuperBronze',
+  'UltraBronze': 'UltraBronze',
+  'ウルトラブロンズ': 'UltraBronze',
+  'ウルブロ': 'UltraBronze',
+  'Silver': 'Silver',
+  'シルバー': 'Silver',
+  'SuperSilver': 'SuperSilver',
+  'スーパーシルバー': 'SuperSilver',
+  'スパシル': 'SuperSilver',
+  'UltraSilver': 'UltraSilver',
+  'ウルトラシルバー': 'UltraSilver',
+  'ウルシル': 'UltraSilver',
+  'Gold': 'Gold',
+  'ゴールド': 'Gold',
+  'SuperGold': 'SuperGold',
+  'スーパーゴールド': 'SuperGold',
+  'スパゴル': 'SuperGold',
+  'UltraGold': 'UltraGold',
+  'ウルトラゴールド': 'UltraGold',
+  'ウルゴル': 'UltraGold',
+  'Platinum': 'Platinum',
+  'スーパープラチナ': 'SuperPlatinum',
+  'スパプラ': 'SuperPlatinum',
+  'SuperPlatinum': 'SuperPlatinum',
+  'ウルトラプラチナ': 'UltraPlatinum',
+  'ウルプラ': 'UltraPlatinum',
+  'UltraPlatinum': 'UltraPlatinum',
+  'ダイア': 'Diamond',
+  'Diamond': 'Diamond',
+  'スーパーダイヤ': 'SuperDiamond',
+  'スパダイ': 'SuperDiamond',
+  'SuperDiamond': 'SuperDiamond',
+  'ウルトラダイヤ': 'UltraDiamond',
+  'ウルダイ': 'UltraDiamond',
+  'UltraDiamond': 'UltraDiamond',
+  'マスター': 'Master',
+  'Master': 'Master',
+  'グランドマスター': 'GrandMaster',
+  'グラマス': 'GrandMaster',
+  'GrandMaster': 'GrandMaster',
+  'アルティメットグランドマスター': 'UltimateGrandMaster',
+  'アルマス': 'UltimateGrandMaster',
+  'UltimateGrandMaster': 'UltimateGrandMaster',
+  'ウォーロード': 'Warload',
+  'Warload': 'Warload',
+};
+
 const CharacterLogoList: { [key: string]: string } = {
   'リュウ': 'ryu',
   '春麗': 'cnl',
@@ -91,9 +145,16 @@ const CharacterLogoList: { [key: string]: string } = {
   // 'イレブン': '', // none
 };
 
+export function LpRankIsNumber(lp: string): boolean {
+  return lp.match(/^\d+$/) !== null;
+}
+
 export function GetLpRank(lp: string) {
   let rank = '';
-  if (!lp.match(/^\d+$/)) {
+  if (lp in LpRankExpressionList) {
+    return LpRankExpressionList[lp]
+  }
+  if (!LpRankIsNumber(lp)) {
     return '';
   }
   const lpnum = Number(lp);
@@ -123,7 +184,7 @@ function GetTweetTextLp(lp: string) {
   if (lp !== '') {
     const str: string[] = [];
     str.push('【LP】' + lp);
-    if (GetLpRank(lp) !== '') {
+    if (LpRankIsNumber(lp)) {
       str.push('[' + GetLpRank(lp) + ']');
     }
     return str.join(' ') + '\n';
