@@ -277,7 +277,7 @@ export function launchTwitterLive() {
 }
 
 export function launchTwitterBot() {
-  window.open('https://twitter.com/BotDragonet');
+  window.open('https://twitter.com/BotDragonet', '_blank', "noopener");
 }
 
 export function launchNewIssue() {
