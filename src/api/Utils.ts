@@ -273,7 +273,7 @@ export function shareApps() {
 }
 
 export function launchTwitterLive() {
-  window.open('https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live', '_blank');
+  window.open('https://twitter.com/hashtag/%E3%82%B9%E3%83%88V%E3%83%A9%E3%82%A6%E3%83%B3%E3%82%B8%E5%8B%9F%E9%9B%86?src=hashtag_click&f=live', '_blank', "noopener");
 }
 
 export function launchTwitterBot() {
@@ -282,7 +282,7 @@ export function launchTwitterBot() {
 
 export function launchNewIssue() {
   const text_uri = encodeURIComponent('スト5ラウンジ募集ツール(@hyde142857)\n▽▽▽ 要望などを記載ください。 ▽▽▽\n');
-  window.open('https://twitter.com/intent/tweet?text=' + text_uri, '_blank');
+  window.open('https://twitter.com/intent/tweet?text=' + text_uri, '_blank', "noopener");
 }
 
 export function launchGithub() {
