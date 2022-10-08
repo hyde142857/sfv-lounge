@@ -76,7 +76,7 @@ const LpRankExpressionList: { [key: string]: string } = {
   'ウルトラプラチナ': 'UltraPlatinum',
   'ウルプラ': 'UltraPlatinum',
   'UltraPlatinum': 'UltraPlatinum',
-  'ダイア': 'Diamond',
+  'ダイヤ': 'Diamond',
   'Diamond': 'Diamond',
   'スーパーダイヤ': 'SuperDiamond',
   'スパダイ': 'SuperDiamond',
